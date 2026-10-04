@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kolophon – dein Leseregal auf einem Buchrücken</title>
+<meta name="description" content="Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das die Cover der Bücher zeigt, die du gelesen hast – auch die vom Kindle.">
+<meta property="og:title" content="Kolophon – dein Leseregal auf einem Buchrücken">
+<meta property="og:description" content="Ein Hardcover mit E-Ink-Rücken, der die Cover deiner gelesenen Bücher zeigt.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Fraunces";src:url(assets/fonts/fraunces.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Fraunces";src:url(assets/fonts/fraunces-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter.woff2) format("woff2");font-weight:100 900;font-display:swap}
+:root{
+  --paper:#f4ede0; --paper-2:#ebe1cf; --paper-3:#e2d5bd; --ink:#1f1d1a; --ink-2:#4a453d; --muted:#7a7266;
+  --accent:#a63d2a; --accent-2:#8a2f1f; --gold:#c19a57; --cloth:#23262b; --eink:#e8e3d6; --line:rgba(31,29,26,.14);
+  --serif:"Fraunces", "Iowan Old Style", Georgia, serif; --sans:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --r:14px; --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(120,100,70,.05) 1px, transparent 1px);background-size:3px 3px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+.eyebrow{font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.015em;line-height:1.08;margin:0}
+h1{font-size:clamp(42px,6.2vw,84px);font-variation-settings:"opsz" 144,"SOFT" 30}
+h2{font-size:clamp(32px,4.2vw,54px);font-variation-settings:"opsz" 120}
+h3{font-size:22px;font-weight:600;letter-spacing:-.005em}
+p{margin:0 0 1em}
+.lead{font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);max-width:36em}
+em.s{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:15px 24px;border-radius:999px;font:600 15px/1 var(--sans);text-decoration:none;border:1.5px solid var(--ink);transition:transform .2s, background .2s, color .2s}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff8ef}
+.btn-primary:hover{background:var(--accent-2);border-color:var(--accent-2);transform:translateY(-1px)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+section{padding:110px 0}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ---------- Nav ---------- */
+.nav{position:sticky;top:0;z-index:20;background:rgba(244,237,224,.86);backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px;font:600 22px/1 var(--serif);text-decoration:none;letter-spacing:-.01em}
+.logo i{display:inline-block;width:12px;height:26px;background:var(--cloth);border-radius:2px;position:relative;box-shadow:inset 0 3px 0 -1px var(--gold), inset 0 -3px 0 -1px var(--gold)}
+.logo i::after{content:"";position:absolute;left:3px;right:3px;top:7px;bottom:7px;background:var(--eink)}
+.nav ul{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav ul a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.nav ul a:hover{color:var(--ink)}
+.nav .btn{padding:11px 18px;font-size:14px}
+
+/* ---------- Hero ---------- */
+.hero{padding:70px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:end}
+.hero-grid>*,.idea-grid>*,.specs-grid>*,.sync-grid>*,.faq-grid>*,.zoom>*{min-width:0}
+.hero-copy{padding-bottom:120px}
+.hero-copy .eyebrow{margin-bottom:26px;display:block}
+.hero-copy h1{margin-bottom:26px}
+.hero-copy .lead{margin-bottom:34px}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.note{font-size:13px;color:var(--muted);margin-top:18px}
+.scene{position:relative;height:660px;padding-bottom:46px;display:flex;align-items:flex-end;justify-content:center}
+.wall{position:absolute;width:640px;height:640px;left:50%;top:0;transform:translateX(-50%);border-radius:50%;background:radial-gradient(circle, rgba(255,251,243,.95) 0%, rgba(255,251,243,0) 68%)}
+.shelf{position:relative;display:flex;align-items:flex-end;gap:4px;padding:0 26px;z-index:2}
+.plank{position:absolute;left:-40px;right:-40px;bottom:-26px;height:26px;background:linear-gradient(#b48a5c,#97704a);border-radius:2px;box-shadow:0 18px 30px -12px rgba(60,40,20,.45), inset 0 2px 0 rgba(255,255,255,.25)}
+.bk{position:relative;border-radius:3px 3px 1px 1px;box-shadow:inset -6px 0 10px -6px rgba(0,0,0,.35), inset 6px 0 8px -6px rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
+.bk span{writing-mode:vertical-rl;transform:rotate(180deg);font:500 13px/1 var(--serif);letter-spacing:.06em;color:rgba(255,248,236,.86);white-space:nowrap}
+.bk::before,.bk::after{content:"";position:absolute;left:14%;right:14%;height:1.5px;background:currentColor;opacity:.35}
+.bk::before{top:7%}.bk::after{bottom:7%}
+.b1{width:46px;height:360px;background:#7b8a6e;color:#e8e0c8}
+.b2{width:34px;height:392px;background:#d9c7a2;color:#5e4b2c}.b2 span{color:#4b3b22}
+.b3{width:58px;height:338px;background:#7d2f25;color:#e6c487}
+.b4{width:38px;height:410px;background:#2d3a4a;color:#c9b27a}
+.b5{width:44px;height:372px;background:#c58f4f;color:#3b2a16}.b5 span{color:#2c1f10}
+.b6{width:30px;height:330px;background:#3f3a35;color:#d8c9a8}
+.lean{transform:rotate(-7deg);transform-origin:bottom left;margin-left:10px}
+/* Das Kolophon-Buch */
+.kolo{position:relative;width:128px;height:452px;background:
+   repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px),
+   repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px), var(--cloth);
+  border-radius:6px 6px 2px 2px;box-shadow:inset -10px 0 16px -8px rgba(0,0,0,.6), inset 8px 0 12px -8px rgba(255,255,255,.14), 0 20px 30px -18px rgba(0,0,0,.5);margin:0 6px}
+.kolo .band{position:absolute;left:12px;right:12px;height:2px;background:var(--gold);opacity:.9}
+.kolo .band.t1{top:22px}.kolo .band.t2{top:32px;height:1px}.kolo .band.b1{bottom:32px;height:1px}.kolo .band.b2{bottom:22px}
+.kolo .mono{position:absolute;bottom:44px;left:0;right:0;text-align:center;font:600 22px/1 var(--serif);color:var(--gold)}
+.kolo .win{position:absolute;left:50%;transform:translateX(-50%);top:17.5%;width:73%;height:58.75%;background:var(--eink);outline:1px solid rgba(193,154,87,.6);outline-offset:4px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25), inset 0 2px 6px rgba(0,0,0,.25)}
+.kolo .win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:cycle 24s infinite steps(1)}
+.kolo .win img:nth-child(1){animation-delay:0s}
+.kolo .win img:nth-child(2){animation-delay:6s}
+.kolo .win img:nth-child(3){animation-delay:12s}
+.kolo .win img:nth-child(4){animation-delay:18s}
+.kolo .flash{position:absolute;inset:0;background:#26241f;opacity:0;animation:flash 6s infinite}
+@keyframes cycle{0%{opacity:1}25%{opacity:0}100%{opacity:0}}
+@keyframes flash{0%{opacity:.0}1%{opacity:.95}2.2%{opacity:0}3%{opacity:.6}4%{opacity:0}100%{opacity:0}}
+.kolo .glare{position:absolute;inset:0;background:linear-gradient(115deg, rgba(255,255,255,.18), transparent 35%);pointer-events:none}
+.tag{position:absolute;z-index:3;font:500 13px/1.35 var(--sans);color:var(--ink-2);background:rgba(255,252,246,.9);border:1px solid var(--line);padding:9px 12px;border-radius:10px;box-shadow:0 8px 24px -14px rgba(0,0,0,.35)}
+.tag b{display:block;font-weight:600;color:var(--ink)}
+.tag.t-a{left:-2%;top:30%}.tag.t-b{right:-4%;top:16%}
+@media (prefers-reduced-motion: reduce){.kolo .win img{animation:none}.kolo .win img:first-child{opacity:1}.kolo .flash{display:none}}
+
+/* ---------- Idee ---------- */
+.idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.idea-grid h2{margin-top:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:46px;border-top:1px solid var(--line)}
+.stats div{padding:22px 18px 0 0}
+.stats b{display:block;font:500 40px/1 var(--serif);margin-bottom:8px}
+.stats span{font-size:14px;color:var(--muted)}
+.quote{font:400 italic 26px/1.4 var(--serif);color:var(--ink-2);border-left:2px solid var(--accent);padding-left:24px;margin:28px 0 0}
+
+/* ---------- Steps ---------- */
+.dark{background:var(--cloth);color:#efe7d8;background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px)}
+.dark .eyebrow{color:var(--gold)}
+.dark .lead{color:#c9c0b0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;counter-reset:s}
+.step{border-top:1px solid rgba(239,231,216,.22);padding-top:26px}
+.step .n{font:500 15px/1 var(--serif);color:var(--gold);letter-spacing:.1em}
+.step h3{margin:16px 0 10px;color:#fbf5ea}
+.step p{color:#c9c0b0;font-size:16px}
+.step .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.chip{font:500 12px/1 var(--sans);padding:7px 10px;border-radius:999px;border:1px solid rgba(239,231,216,.25);color:#e6dccb}
+
+/* ---------- Features ---------- */
+.feat-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px}
+.feat-head .lead{max-width:28em;margin:0}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.f{background:var(--paper);padding:34px 30px 30px}
+.f svg{width:30px;height:30px;stroke:var(--accent);fill:none;stroke-width:1.6;margin-bottom:22px}
+.f h3{font-size:20px;margin-bottom:8px}
+.f p{font-size:15.5px;color:var(--ink-2);margin:0}
+
+/* ---------- Gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:50px;align-items:end}
+.gallery figure{margin:0}
+.gallery .frame{background:var(--eink);padding:6px;border-radius:4px;box-shadow:0 0 0 7px var(--cloth), 0 18px 30px -14px rgba(0,0,0,.45)}
+.gallery img{width:100%;aspect-ratio:272/792;image-rendering:auto}
+.gallery figcaption{font-size:13px;color:var(--muted);margin-top:18px;text-align:center}
+.zoom{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;margin-top:90px}
+.zoom .px{background:var(--eink);border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px var(--line);height:300px}
+.zoom .px img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+
+/* ---------- Specs ---------- */
+.specs-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+table{width:100%;border-collapse:collapse;font-size:15.5px}
+th,td{text-align:left;padding:15px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{width:38%;font-weight:500;color:var(--muted)}
+td{color:var(--ink)}
+.small{font-size:13px;color:var(--muted)}
+
+/* ---------- Sync ---------- */
+.sync{background:var(--paper-2)}
+.sync-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:start}
+.honest{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px;margin-top:30px}
+.honest h3{font-size:19px;margin-bottom:10px}
+.honest p{font-size:15.5px;color:var(--ink-2);margin:0}
+.routes{display:flex;flex-direction:column;gap:14px}
+.route{display:grid;grid-template-columns:auto 1fr;gap:18px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px}
+.route .badge{font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:7px 9px;border-radius:6px;height:fit-content;white-space:nowrap}
+.auto{background:#e3ecdf;color:#2f5b2f}.once{background:#f1e4c9;color:#7a5413}.man{background:#e9e2f0;color:#55407a}.no{background:#f3dcd6;color:#8a2f1f}
+.route h3{font-size:18px;margin-bottom:4px}
+.route p{margin:0;font-size:15px;color:var(--ink-2)}
+.route.no-go{background:transparent;border-style:dashed}
+
+/* ---------- Waitlist ---------- */
+.wait{text-align:center}
+.wait h2{max-width:14em;margin:16px auto 18px}
+.wait .lead{margin:0 auto 38px}
+form{max-width:620px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+form .full{grid-column:1/-1}
+label{font-size:13px;font-weight:600;color:var(--ink-2);display:block;margin-bottom:6px}
+input,select{width:100%;font:16px var(--sans);padding:15px 16px;border-radius:12px;border:1.5px solid var(--line);background:#fffaf2;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--ink-2)}
+.consent input{width:18px;height:18px;margin-top:3px;flex:none}
+form .btn{justify-content:center;width:100%;cursor:pointer;font-size:16px;padding:17px}
+.placeholder{display:inline-block;margin-top:18px;font-size:13px;color:var(--accent-2);background:#f6e2db;border-radius:8px;padding:8px 12px}
+#thanks{display:none;margin-top:16px;font-weight:600;color:#2f5b2f}
+
+/* ---------- FAQ ---------- */
+.faq-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:70px}
+details{border-bottom:1px solid var(--line);padding:22px 0}
+summary{cursor:pointer;list-style:none;font:500 20px/1.3 var(--serif);display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 26px/1 var(--sans);color:var(--accent);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:14px 0 0;color:var(--ink-2);font-size:16px;max-width:40em}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:#bdb4a5;padding:60px 0 50px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+footer .logo{color:#f4ede0}
+footer a{color:#e8dfcf}
+footer p{margin:6px 0}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero-grid,.idea-grid,.specs-grid,.sync-grid,.faq-grid,.zoom{grid-template-columns:minmax(0,1fr);gap:40px}
+  .hero-copy{padding-bottom:10px}
+  .scene{height:560px}
+  .features{grid-template-columns:1fr 1fr}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .feat-head{flex-direction:column;align-items:start}
+  .nav ul{display:none}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wall{width:420px;height:420px}
+  .wrap{padding:0 20px}
+  section{padding:76px 0}
+  .scene{height:480px;transform:scale(.82);transform-origin:bottom center;margin-top:-60px}
+  .tag{display:none}
+  .b1,.b6{display:none}
+  .steps,.features{grid-template-columns:1fr}
+  .stats b{font-size:32px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery figure:nth-child(n+5){display:none}
+  form{grid-template-columns:1fr}
+  .nav .btn{display:none}
+  .zoom .px{height:220px}
+  .route{grid-template-columns:1fr;gap:10px}
+  .route .badge{justify-self:start}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="logo"><i></i>Kolophon</a>
+    <ul>
+      <li><a href="#idee">Idee</a></li>
+      <li><a href="#so-gehts">So geht’s</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#kindle">Kindle-Sync</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#warteliste" class="btn btn-primary">Warteliste</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">E-Ink-Objekt für Vielleser · Arbeitstitel</span>
+      <h1>Dein Leseregal auf <em class="s">einem</em> Buchrücken.</h1>
+      <p class="lead">Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das nacheinander die Cover der Bücher zeigt, die du gelesen hast – auch die vom Kindle. Ohne Licht, ohne Kabel, monatelang.</p>
+      <div class="cta-row">
+        <a href="#warteliste" class="btn btn-primary">Auf die Warteliste
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+        <a href="#so-gehts" class="btn btn-ghost">So funktioniert’s</a>
+      </div>
+      <p class="note">Geplanter Preis: 149 € · Early Bird 129 € · Konzeptphase, noch nicht bestellbar</p>
+    </div>
+    <div class="scene" aria-label="Illustration: Bücherregal mit dem Kolophon-Buch, dessen Rücken wechselnde Cover zeigt">
+      <div class="wall"></div>
+      <div class="tag t-a"><b>5,79″ E-Ink</b>792 × 272 px im Rücken</div>
+      <div class="tag t-b"><b>Wechselt stündlich</b>oder per Druck aufs Kapital</div>
+      <div class="shelf">
+        <div class="bk b1"><span>Das Gewicht der Worte</span></div>
+        <div class="bk b2"><span>Nordlicht</span></div>
+        <div class="bk b3"><span>Über Ozeane</span></div>
+        <div class="kolo" role="img" aria-label="Kolophon-Buchrücken mit E-Ink-Fenster">
+          <div class="band t1"></div><div class="band t2"></div>
+          <div class="win">
+            <img src="assets/frames/fjord_m0.png" alt="">
+            <img src="assets/frames/atlas_m0.png" alt="">
+            <img src="assets/frames/triest_m0.png" alt="">
+            <img src="assets/frames/salz_m0.png" alt="">
+            <div class="flash"></div>
+            <div class="glare"></div>
+          </div>
+          <div class="mono">K</div>
+          <div class="band b1"></div><div class="band b2"></div>
+        </div>
+        <div class="bk b4"><span>Die Kartografin</span></div>
+        <div class="bk b5"><span>Ein Jahr in Wien</span></div>
+        <div class="bk b6 lean"><span>Notizen</span></div>
+        <div class="plank"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="idee">
+  <div class="wrap idea-grid">
+    <div>
+      <span class="eyebrow">Die Idee</span>
+      <h2>E-Books verschwinden.<br>Das Regal bleibt.</h2>
+      <p class="quote">„Ein Regal erzählt, wer man ist. Ein Kindle erzählt gar nichts.“</p>
+    </div>
+    <div>
+      <p class="lead">Wer digital liest, liest oft mehr – aber nichts davon steht im Raum. Keine Rücken, an denen der Blick hängen bleibt, kein Gesprächsanfang, keine Erinnerung im Vorbeigehen.</p>
+      <p>Kolophon bringt deine gelesenen Bücher zurück ins Regal: als ein einziges, echtes Hardcover zwischen deinen Papierbüchern. Sein Rücken blättert langsam durch deine Lesegeschichte – Cover, Titel und wann du es gelesen hast. E-Ink braucht nur beim Umblättern Strom und sieht aus wie bedrucktes Papier, nicht wie ein Bildschirm.</p>
+      <div class="stats">
+        <div><b>1</b><span>Buchrücken für deine ganze Lesegeschichte</span></div>
+        <div><b>~500</b><span>Cover im Gerät gespeichert</span></div>
+        <div><b>0</b><span>Licht – reflektiv wie Papier</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="so-gehts">
+  <div class="wrap">
+    <span class="eyebrow">So funktioniert’s</span>
+    <h2 style="margin-top:16px;max-width:15em">In drei Schritten vom Kindle ins Regal.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Lesegeschichte verbinden</h3>
+        <p>In der Kolophon-App verknüpfst du die Quelle, in der deine gelesenen Bücher stehen. Kindle-Leser verbinden ihr Goodreads-Konto mit Amazon – oder laden einmalig ihren Amazon-Datenexport hoch.</p>
+        <div class="chips"><span class="chip">Goodreads</span><span class="chip">Hardcover</span><span class="chip">Amazon-Export</span><span class="chip">ISBN-Scan</span></div>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Kolophon gestaltet jeden Rücken</h3>
+        <p>Für jedes Buch holen wir das Cover, schneiden es auf das schmale Format zu, rastern es für E-Ink und setzen Titel, Autor und Lesedatum – wie ein Buchbinder.</p>
+        <div class="chips"><span class="chip">Open Library</span><span class="chip">Google Books</span><span class="chip">Dithering</span></div>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Ins Regal stellen</h3>
+        <p>Kolophon lädt die Rücken einmal täglich per WLAN und blättert stündlich weiter. Ein Druck aufs Kapital zeigt das nächste Buch. Nachts schläft es – das letzte Cover bleibt stehen.</p>
+        <div class="chips"><span class="chip">WLAN</span><span class="chip">Deep Sleep</span><span class="chip">USB-C</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="feat-head">
+      <div><span class="eyebrow">Features</span><h2 style="margin-top:16px">Ein Buch, das mitliest.</h2></div>
+      <p class="lead">Gebaut wie ein echter Einband – Leinen, Graukarton, Goldprägung. Drinnen: ein stromsparender ESP32, ein Akku und ein 5,79-Zoll-E-Ink-Streifen.</p>
+    </div>
+    <div class="features">
+      <div class="f"><svg viewBox="0 0 32 32"><rect x="10" y="3" width="12" height="26" rx="1.5"/><path d="M13 9h6M13 23h6"/><path d="M4 12l3 4-3 4M28 12l-3 4 3 4"/></svg><h3>Cover-Rotation</h3><p>Stündlich, täglich oder nach deinem Rhythmus. Zufällig, chronologisch oder „Lieblinge zuerst“.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><path d="M6 6h20M6 6v20M16 10v16M11 26h10"/></svg><h3>Titel &amp; Lesedatum</h3><p>Rückentitel in DIN-Laufrichtung (aufsteigend) oder englisch, dazu „gelesen im August 2026“.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><rect x="5" y="4" width="9" height="24" rx="1"/><rect x="18" y="4" width="9" height="24" rx="1"/><path d="M7 10h5M20 9v14"/></svg><h3>Zwei Gesichter</h3><p>Cover-Modus mit Bild – oder klassischer Typo-Rücken wie bei einer Gesamtausgabe. Wechsel per Taster.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><path d="M21 5a11 11 0 1 0 6 16A9 9 0 0 1 21 5z"/></svg><h3>Nachtruhe &amp; Deep Sleep</h3><p>Zwischen den Wechseln schläft das Gerät mit wenigen Mikroampere. Das Bild bleibt ohne Strom stehen.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><rect x="9" y="8" width="14" height="20" rx="2"/><path d="M16 3v8"/><circle cx="16" cy="18" r="2.5"/></svg><h3>Druck aufs Kapital</h3><p>Ein versteckter Taster oben im Buch: drücken wie beim Herausziehen – und das nächste Buch erscheint.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><rect x="4" y="10" width="22" height="12" rx="2"/><path d="M26 14h2v4h-2M8 14h7v4H8z"/></svg><h3>Monate pro Ladung</h3><p>2000-mAh-Akku, USB-C im Fuß. Bei stündlichem Wechsel rechnerisch über ein Jahr; wir versprechen konservativ 6+ Monate.</p></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="display">
+  <div class="wrap">
+    <span class="eyebrow">Auf dem Display</span>
+    <h2 style="margin-top:16px;max-width:16em">So sieht dein Regal auf E-Ink aus.</h2>
+    <p class="lead" style="margin-top:18px">Echte Renderings des Kolophon-Renderers in 272 × 792 Pixeln, 1 Bit, gerastert. Die Bücher sind erfunden – deine werden es nicht sein.</p>
+    <div class="gallery">
+      <figure><div class="frame"><img src="assets/frames/fjord_m0.png" alt="E-Ink-Rücken: Die Stille der Fjorde"></div><figcaption>Cover-Modus</figcaption></figure>
+      <figure><div class="frame"><img src="assets/frames/atlas_m0.png" alt="E-Ink-Rücken: Atlas der Gezeiten"></div><figcaption>Cover-Modus</figcaption></figure>
+      <figure><div class="frame"><img src="assets/frames/triest_m0.png" alt="E-Ink-Rücken: Der letzte Sommer in Triest"></div><figcaption>Cover-Modus</figcaption></figure>
+      <figure><div class="frame"><img src="assets/frames/salz_m0.png" alt="E-Ink-Rücken: Kupfer und Salz"></div><figcaption>Cover-Modus</figcaption></figure>
+      <figure><div class="frame"><img src="assets/frames/fjord_m1.png" alt="Typo-Rücken: Die Stille der Fjorde"></div><figcaption>Typo-Rücken</figcaption></figure>
+      <figure><div class="frame"><img src="assets/frames/triest_m1.png" alt="Typo-Rücken: Der letzte Sommer in Triest"></div><figcaption>Typo-Rücken</figcaption></figure>
+    </div>
+    <div class="zoom">
+      <div class="px"><img src="assets/frames/fjord_zoom.png" alt="Vergrößerter Ausschnitt mit sichtbarem Punktraster"></div>
+      <div>
+        <h3 style="font-size:28px;font-family:var(--serif);font-weight:500">Gerastert wie ein Holzstich.</h3>
+        <p style="margin-top:14px;color:var(--ink-2)">E-Ink kann hier nur Schwarz und Weiß. Mit Floyd-Steinberg-Dithering wird aus jedem Cover ein feines Punktraster – bei 145 ppi aus Regalentfernung ein ruhiges, graustufiges Bild mit der Anmutung eines alten Drucks. Das Rendering passiert in der Cloud, das Buch lädt nur fertige 27-kB-Bilder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="specs" style="padding-top:40px">
+  <div class="wrap specs-grid">
+    <div>
+      <span class="eyebrow">Technische Daten</span>
+      <h2 style="margin-top:16px">Unter dem Leinen.</h2>
+      <p class="lead" style="margin-top:18px">Prototyp-Spezifikation (Rev A). Änderungen bis zur Serie vorbehalten.</p>
+    </div>
+    <table>
+      <tr><th>Format</th><td>Hardcover-Replik, 240 × 165 × 68 mm, ca. 450 g</td></tr>
+      <tr><th>Display</th><td>5,79″ E-Ink-Streifen, 792 × 272 px, 145 ppi, Schwarz/Weiß<br><span class="small">Good Display GDEY0579T93 · Teil-Refresh 0,3 s, voll 3 s</span></td></tr>
+      <tr><th>Sichtfenster</th><td>49,7 × 141 mm im Buchrücken, entspiegelt</td></tr>
+      <tr><th>Prozessor</th><td>ESP32-S3, 16 MB Flash, 8 MB PSRAM, WLAN 2,4 GHz</td></tr>
+      <tr><th>Speicher</th><td>ca. 500 Rücken offline (27 kB pro Bild)</td></tr>
+      <tr><th>Akku</th><td>LiPo 2000 mAh, USB-C-Laden (ca. 4 h)<br><span class="small">Laufzeit rechnerisch &gt; 1 Jahr bei 16 Wechseln/Tag; Selbstentladung begrenzt real auf ca. 6–12 Monate</span></td></tr>
+      <tr><th>Bedienung</th><td>Taster im Kapital (weiter) · Taster im Fuß (Modus / Setup)</td></tr>
+      <tr><th>Materialien</th><td>Buckram-Leinen, Graukarton, Goldprägung, Innenträger aus PETG</td></tr>
+      <tr><th>Datenquellen</th><td>Goodreads, Hardcover, Amazon-Datenexport, CSV, ISBN</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="sync" id="kindle">
+  <div class="wrap sync-grid">
+    <div>
+      <span class="eyebrow">Kindle-Sync, ehrlich erklärt</span>
+      <h2 style="margin-top:16px">Amazon gibt deine Lesehistorie nicht einfach her.</h2>
+      <p class="lead" style="margin-top:18px">Für das, was du auf dem Kindle gelesen hast, gibt es keine offene Schnittstelle. Wir bauen deshalb auf Wege, die legal und stabil sind – statt auf Tricks, die nächste Woche brechen.</p>
+      <div class="honest">
+        <h3>Was wir bewusst nicht tun</h3>
+        <p>Wir fragen nie nach deinem Amazon-Passwort, lesen keine Amazon-Seiten automatisiert aus und setzen keinen Jailbreak voraus. Das verstößt gegen Nutzungsbedingungen, ist unsicher und bricht bei jedem Update.</p>
+      </div>
+    </div>
+    <div class="routes">
+      <div class="route"><span class="badge auto">Automatisch</span><div><h3>Kindle → Goodreads → Kolophon</h3><p>Amazon und Goodreads lassen sich verknüpfen; in der Kindle-App (iOS/Android) landen fertige Bücher automatisch auf „Gelesen“. Kolophon liest dein Goodreads-Regal über den öffentlichen RSS-Feed – täglich, ohne Login.</p></div></div>
+      <div class="route"><span class="badge auto">Automatisch</span><div><h3>Hardcover.app</h3><p>Die Goodreads-Alternative hat eine offizielle API. Persönlichen Schlüssel einfügen, fertig – auch private Regale.</p></div></div>
+      <div class="route"><span class="badge once">Einmalig</span><div><h3>Amazon-Datenexport</h3><p>Unter „Meine Daten anfordern“ schickt Amazon dir deine Kindle-Lesesitzungen als ZIP. Hochladen, und Kolophon erkennt deine fertig gelesenen Bücher – ideal für die Jahre davor.</p></div></div>
+      <div class="route"><span class="badge man">Manuell</span><div><h3>ISBN-Scan &amp; CSV</h3><p>Papierbücher, Tolino, Kobo, Bibliothek: per Handykamera scannen oder Goodreads-/StoryGraph-CSV importieren.</p></div></div>
+      <div class="route no-go"><span class="badge no">Nur für Bastler</span><div><h3>Jailbreak + KOReader</h3><p>Technisch möglich, aber nicht unser Weg: kann die Garantie gefährden, bricht bei Updates und liefert nur Lesefortschritt, keine sauberen Buchdaten.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="wait" id="warteliste">
+  <div class="wrap">
+    <span class="eyebrow">Warteliste</span>
+    <h2>Sei dabei, wenn die ersten 100 Bücher gebunden werden.</h2>
+    <p class="lead">Early-Bird-Preis 129 € statt 149 €. Keine Zahlung, kein Spam – nur eine Mail, wenn es losgeht.</p>
+    <form id="wl" action="mailto:hallo@kolophon.example?subject=Kolophon%20Warteliste" method="post" enctype="text/plain">
+      <div><label for="name">Vorname</label><input id="name" name="Vorname" autocomplete="given-name" placeholder="Anna"></div>
+      <div><label for="mail">E-Mail</label><input id="mail" name="E-Mail" type="email" required autocomplete="email" placeholder="anna@beispiel.at"></div>
+      <div class="full"><label for="src">Wo liest du hauptsächlich?</label>
+        <select id="src" name="Lesequelle"><option>Kindle</option><option>Tolino</option><option>Kobo</option><option>Papier</option><option>Gemischt</option></select></div>
+      <label class="consent full"><input type="checkbox" required> Ich möchte per E-Mail informiert werden, wenn Kolophon bestellbar ist. Abmeldung jederzeit.</label>
+      <div class="full"><button class="btn btn-primary" type="submit">Platz reservieren</button></div>
+    </form>
+    <span class="placeholder">Platzhalter: Das Formular ist noch nicht an einen Newsletter-Dienst angebunden und öffnet nur dein Mailprogramm.</span>
+    <p id="thanks">Danke! Dein Mailprogramm öffnet sich mit der Anmeldung.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div><span class="eyebrow">FAQ</span><h2 style="margin-top:16px">Gute Fragen.</h2></div>
+    <div>
+      <details open><summary>Brauche ich einen Kindle?</summary><p>Nein. Kolophon zeigt jedes Buch, das in deiner Lesegeschichte steht – egal ob Kindle, Tolino, Kobo, Hörbuch oder Papier. Für Kindle-Leser haben wir nur besonders bequeme Import-Wege vorbereitet.</p></details>
+      <details><summary>Synchronisiert sich Kolophon direkt mit meinem Kindle?</summary><p>Nicht direkt – Amazon bietet dafür keine öffentliche Schnittstelle. Der Weg über Goodreads ist der Standard: Amazon und Goodreads gehören zusammen, und in der Kindle-App lässt sich „Gelesen“ automatisch übertragen. Ältere Bücher holst du einmalig über den Amazon-Datenexport.</p></details>
+      <details><summary>Wie lange hält der Akku?</summary><p>Ein Wechsel kostet nur wenige Sekunden Strom, dazwischen schläft das Gerät mit rund 20 µA. Rechnerisch reicht eine Ladung bei stündlichem Wechsel über ein Jahr; weil Lithium-Akkus sich selbst entladen, versprechen wir 6 Monate und mehr.</p></details>
+      <details><summary>Leuchtet das Display?</summary><p>Nein. E-Ink reflektiert Licht wie Papier und ist im Dunkeln nicht sichtbar – genau wie die Bücher daneben. Dafür blendet es nicht und sieht nie nach Bildschirm aus.</p></details>
+      <details><summary>Gibt es Farbe?</summary><p>Die erste Version ist Schwarz-Weiß, weil sie schnell umblättert und Graustufen-Raster am schönsten aussehen. Eine Variante mit Rot und Gelb (gleiches Format) testen wir als Sonderedition.</p></details>
+      <details><summary>Was passiert mit meinen Daten?</summary><p>Wir speichern nur Buchtitel, ISBN und Lesedatum, gehostet in der EU. Kein Amazon-Passwort, kein Tracking im Gerät, Export und Löschung jederzeit.</p></details>
+      <details><summary>Kann ich den Einband wählen?</summary><p>Geplant sind drei Leinenfarben (Tinte, Moos, Ochsenblut) und eine Prägung mit deinen Initialen statt des „K“.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="#top" class="logo"><i></i>Kolophon</a>
+      <p style="margin-top:14px;max-width:30em">Konzeptstudie 2026 · Wien. „Kolophon“ ist ein Arbeitstitel. Alle gezeigten Bücher sind erfunden.</p>
+    </div>
+    <div>
+      <p>Cover-Daten künftig u. a. über <a href="https://openlibrary.org" rel="noopener">Open Library</a> und Google Books.</p>
+      <p>Kindle, Goodreads und Amazon sind Marken der Amazon.com, Inc. Kein offizielles Amazon-Produkt.</p>
+      <p>Impressum &amp; Datenschutz folgen vor dem Start.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('wl').addEventListener('submit', function(){
+    document.getElementById('thanks').style.display = 'block';
+  });
+</script>
+</body>
+</html>

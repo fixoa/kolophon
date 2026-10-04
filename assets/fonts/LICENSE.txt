@@ -1,0 +1,2 @@
+Fraunces (Undercase Type) und Inter (Rasmus Andersson) – beide unter der SIL Open Font License 1.1.
+Hier als Latin-Subset (WOFF2) eingebettet. Lizenztext: https://openfontlicense.org/open-font-license-official-text/
