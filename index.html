@@ -78,28 +78,65 @@ section{padding:110px 0}
 .b5{width:44px;height:372px;background:#c58f4f;color:#3b2a16}.b5 span{color:#2c1f10}
 .b6{width:30px;height:330px;background:#3f3a35;color:#d8c9a8}
 .lean{transform:rotate(-7deg);transform-origin:bottom left;margin-left:10px}
-/* Das Kolophon-Buch */
-.kolo{position:relative;width:128px;height:452px;background:
-   repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 3px),
-   repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px), var(--cloth);
-  border-radius:6px 6px 2px 2px;box-shadow:inset -10px 0 16px -8px rgba(0,0,0,.6), inset 8px 0 12px -8px rgba(255,255,255,.14), 0 20px 30px -18px rgba(0,0,0,.5);margin:0 6px}
-.kolo .band{position:absolute;left:12px;right:12px;height:2px;background:var(--gold);opacity:.9}
-.kolo .band.t1{top:22px}.kolo .band.t2{top:32px;height:1px}.kolo .band.b1{bottom:32px;height:1px}.kolo .band.b2{bottom:22px}
-.kolo .mono{position:absolute;bottom:44px;left:0;right:0;text-align:center;font:600 22px/1 var(--serif);color:var(--gold)}
-.kolo .win{position:absolute;left:50%;transform:translateX(-50%);top:17.5%;width:73%;height:58.75%;background:var(--eink);outline:1px solid rgba(193,154,87,.6);outline-offset:4px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25), inset 0 2px 6px rgba(0,0,0,.25)}
-.kolo .win img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:cycle 24s infinite steps(1)}
-.kolo .win img:nth-child(1){animation-delay:0s}
-.kolo .win img:nth-child(2){animation-delay:6s}
-.kolo .win img:nth-child(3){animation-delay:12s}
-.kolo .win img:nth-child(4){animation-delay:18s}
-.kolo .flash{position:absolute;inset:0;background:#26241f;opacity:0;animation:flash 6s infinite}
-@keyframes cycle{0%{opacity:1}25%{opacity:0}100%{opacity:0}}
-@keyframes flash{0%{opacity:.0}1%{opacity:.95}2.2%{opacity:0}3%{opacity:.6}4%{opacity:0}100%{opacity:0}}
-.kolo .glare{position:absolute;inset:0;background:linear-gradient(115deg, rgba(255,255,255,.18), transparent 35%);pointer-events:none}
+/* Ein Kolophon-Buch: Rücken 68×240 mm, Fenster 49,7×141 mm (GDEY0579T93) */
+.kolo-book{position:relative;width:var(--kolo-w,128px);max-width:100%;height:auto;aspect-ratio:68/240;flex:none}
+.kolo-front,.kolo-side{position:absolute;inset:0}
+.kolo-book.is-profile{width:calc(var(--kolo-w,128px) * 165 / 68);aspect-ratio:165/240}
+.kolo-book.is-profile .kolo-front,.kolo-book:not(.is-profile) .kolo-side{display:none}
+.kolo-front{background:
+  repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px),
+  repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0 1px, transparent 1px 3px), var(--cloth);
+  border-radius:4.7% 4.7% 1.6% 1.6%;box-shadow:inset -7.8% 0 12% -6% rgba(0,0,0,.6), inset 6% 0 9% -6% rgba(255,255,255,.14), 0 18px 28px -18px rgba(0,0,0,.5)}
+.kolo-band{position:absolute;left:11%;right:11%;height:2px;background:var(--gold);opacity:.9}
+.kolo-band.t1{top:4.87%}.kolo-band.t2{top:7.08%;height:1px}
+.kolo-band.b1{bottom:7.08%;height:1px}.kolo-band.b2{bottom:4.87%}
+.kolo-mono{position:absolute;bottom:9.7%;left:0;right:0;text-align:center;font:600 calc(var(--kolo-w) * 0.172)/1 var(--serif);color:var(--gold)}
+.kolo-win{position:absolute;left:50%;transform:translateX(-50%);top:17.5%;width:73%;height:58.75%;background:var(--eink);outline:1px solid rgba(193,154,87,.6);outline-offset:4px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.25), inset 0 2px 6px rgba(0,0,0,.25)}
+.kolo-screen{position:absolute;inset:0}
+.kolo-flash{position:absolute;inset:0;background:#1c1b18;opacity:0;pointer-events:none;z-index:2}
+.kolo-flash.on{animation:einkflick .42s linear}
+.kolo-glare{position:absolute;inset:0;background:linear-gradient(115deg, rgba(255,255,255,.18), transparent 35%);pointer-events:none;z-index:3}
+.kolo-usbc{position:absolute;left:50%;bottom:1.7%;width:22%;height:2.15%;transform:translateX(-50%);border-radius:2px;background:#141311;box-shadow:inset 0 0 0 1px rgba(193,154,87,.55);z-index:4}
+.kolo-usbc::after{content:"";position:absolute;left:20%;right:20%;top:24%;bottom:24%;border-radius:1px;background:#d5cbb8}
+.kolo-book.is-cycle .kolo-screen > *{position:absolute;inset:0;opacity:0;animation:kolo-cycle 24s infinite steps(1)}
+.kolo-book.is-cycle .kolo-screen > :nth-child(1){animation-delay:0s}
+.kolo-book.is-cycle .kolo-screen > :nth-child(2){animation-delay:6s}
+.kolo-book.is-cycle .kolo-screen > :nth-child(3){animation-delay:12s}
+.kolo-book.is-cycle .kolo-screen > :nth-child(4){animation-delay:18s}
+.kolo-book.is-cycle .kolo-screen img{width:100%;height:100%;object-fit:cover}
+.kolo-book.is-cycle .kolo-flash{animation:kolo-refresh 6s infinite}
+.kolo-book.is-cycle.frames-2 .kolo-screen > *{animation-duration:16s}
+.kolo-book.is-cycle.frames-2 .kolo-screen > :nth-child(2){animation-delay:8s}
+.kolo-book.is-cycle.frames-2 .kolo-screen > *{animation-name:kolo-cycle-2}
+@keyframes kolo-cycle{0%{opacity:1}25%{opacity:0}100%{opacity:0}}
+@keyframes kolo-cycle-2{0%{opacity:1}50%{opacity:0}100%{opacity:0}}
+@keyframes kolo-refresh{0%{opacity:0}1%{opacity:.95}2.2%{opacity:0}3%{opacity:.55}4%{opacity:0}100%{opacity:0}}
+.kolo-cover{height:36%;margin:7% 7% 0;border-radius:2px;background:linear-gradient(160deg, rgba(255,255,255,.3), transparent 46%), var(--cover,#3d5a4c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+.kolo-title{font:560 calc(var(--kolo-w) * 0.112)/1.15 var(--serif);margin:6% 7% 0;letter-spacing:-.01em}
+.kolo-when{font-size:calc(var(--kolo-w) * 0.078);line-height:1.25;color:var(--ink-2);margin:3% 7% 0}
+.kolo-quote{height:100%;padding:8% 8% 6%;display:flex;flex-direction:column;justify-content:center;background:var(--eink)}
+.kolo-q{font:italic 500 calc(var(--kolo-w) * 0.095)/1.2 var(--serif);margin:0}
+.kolo-qmeta{font-size:calc(var(--kolo-w) * 0.062);line-height:1.25;color:var(--ink-2);margin:8% 0 0}
+.kolo-qloc{font-size:calc(var(--kolo-w) * 0.058);line-height:1.2;color:var(--muted);margin:3% 0 0}
+.kolo-side{background:#efe4d0;border-radius:3px 4px 2px 2px;box-shadow:inset -8px 0 14px -10px rgba(0,0,0,.28), 0 18px 28px -18px rgba(0,0,0,.45);overflow:hidden}
+.kolo-side-spine{position:absolute;left:0;top:0;bottom:0;width:41.2%;background:
+  repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px), var(--cloth)}
+.kolo-side .kolo-band{left:6%;right:64%}
+.kolo-side .kolo-usbc{left:20.6%;bottom:2.2%;width:12%}
+.kolo-hatch{position:absolute;left:48%;right:7%;bottom:8%;height:16%;border-radius:3px;background:#e4d9c6;box-shadow:inset 0 0 0 1.5px rgba(31,29,26,.38), inset 0 7px 0 rgba(255,255,255,.35)}
+.kolo-hatch span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:600 11px/1.15 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);text-align:center;padding:0 6px}
+.kolo-stand{display:flex;flex-direction:column;align-items:center;width:max-content;max-width:100%}
+.kolo-plank{width:calc(var(--kolo-w, 128px) * 1.45);max-width:100%;height:14px;margin-top:-1px;background:linear-gradient(#b48a5c,#97704a);border-radius:2px;box-shadow:0 10px 16px -12px rgba(60,40,20,.5)}
+.kolo-stand:has(.is-profile) .kolo-plank{width:calc(var(--kolo-w, 128px) * 165 / 68 + 18px)}
+.shelf .kolo-book{margin:0 6px}
 .tag{position:absolute;z-index:3;font:500 13px/1.35 var(--sans);color:var(--ink-2);background:rgba(255,252,246,.9);border:1px solid var(--line);padding:9px 12px;border-radius:10px;box-shadow:0 8px 24px -14px rgba(0,0,0,.35)}
 .tag b{display:block;font-weight:600;color:var(--ink)}
 .tag.t-a{left:-2%;top:30%}.tag.t-b{right:-4%;top:16%}
-@media (prefers-reduced-motion: reduce){.kolo .win img{animation:none}.kolo .win img:first-child{opacity:1}.kolo .flash{display:none}}
+@media (prefers-reduced-motion: reduce){
+  .kolo-book.is-cycle .kolo-screen > *{animation:none;opacity:0}
+  .kolo-book.is-cycle .kolo-screen > :first-child{opacity:1}
+  .kolo-book.is-cycle .kolo-flash,.kolo-flash{display:none}
+}
 
 /* ---------- Idee ---------- */
 .idea-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
@@ -128,20 +165,7 @@ section{padding:110px 0}
 .conn-svg{width:100%;height:100%;display:block}
 .conn-line{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-dasharray:2 7;stroke-linecap:round;opacity:.9}
 .conn-packet{position:absolute;z-index:2;left:0;top:50%;width:36px;height:36px;display:grid;place-items:center;background:#fffaf2;border:1.5px solid var(--accent);border-radius:50%;color:var(--accent);box-shadow:0 8px 16px -12px rgba(0,0,0,.5);transform:translate(-50%,-50%)}
-.ms{position:relative;width:150px;height:392px;background:
-  repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px), var(--cloth);
-  border-radius:6px 6px 2px 2px;box-shadow:inset -10px 0 14px -8px rgba(0,0,0,.55), inset 8px 0 10px -8px rgba(255,255,255,.12), 0 16px 26px -18px rgba(0,0,0,.45)}
-.ms-band{position:absolute;left:14px;right:14px;height:2px;background:var(--gold)}
-.ms-band.t1{top:16px}.ms-band.t2{top:24px;height:1px;opacity:.7}
-.ms-band.b1{bottom:24px;height:1px;opacity:.7}.ms-band.b2{bottom:16px}
-.ms-win{position:absolute;left:50%;transform:translateX(-50%);top:13%;width:78%;height:70%;background:var(--eink);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.28);outline:1px solid rgba(193,154,87,.6);outline-offset:4px}
-.ms-cover{height:34%;margin:8px 8px 0;border-radius:2px;background:linear-gradient(160deg, rgba(255,255,255,.3), transparent 46%), var(--cover,#3d5a4c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
-.ms-title{font:560 15px/1.15 var(--serif);margin:8px 8px 0;letter-spacing:-.01em}
-.ms-when{font-size:11px;line-height:1.3;color:var(--ink-2);margin:5px 8px 0}
-.ms-flash{position:absolute;inset:0;background:#1c1b18;opacity:0;pointer-events:none}
-.ms-flash.on{animation:einkflick .42s linear}
-.ms-mono{position:absolute;bottom:30px;left:0;right:0;text-align:center;font:600 18px/1 var(--serif);color:var(--gold)}
-.ms-plank{width:190px;height:16px;margin-top:-2px;background:linear-gradient(#b48a5c,#97704a);border-radius:2px;box-shadow:0 10px 16px -12px rgba(60,40,20,.5)}
+.conn .kolo-stand{--kolo-w:132px}
 .cycle{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .cycle-count{margin:0;font:500 28px/1 var(--serif);letter-spacing:.02em}
 .cycle-count span{color:var(--muted);font-size:18px}
@@ -161,6 +185,7 @@ section{padding:110px 0}
 .app-kicker{margin:0;font-size:13px;color:var(--muted)}
 .app-value{margin:6px 0 0;font:500 28px/1.1 var(--serif)}
 .app-hint{margin:8px 0 0;font-size:13.5px;color:var(--ink-2)}
+.app-view{margin:4px 0 0;font:500 22px/1.15 var(--serif)}
 .conn-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0 0;padding:0}
 .conn-steps li{margin:0;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
 .conn-steps b{display:block;font:600 15px/1.3 var(--sans);color:var(--ink);margin-bottom:4px}
@@ -174,9 +199,22 @@ section{padding:110px 0}
   .conn-stage[data-phase="travel"] .conn-line{animation:linedash .9s linear infinite}
 }
 @media (prefers-reduced-motion: reduce){
-  .ms-flash{display:none}
   .conn-packet{left:50%}
 }
+
+/* ---------- Zitate ---------- */
+.marks{background:var(--paper)}
+.marks h2{margin-top:16px;max-width:14em}
+.marks-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:56px;align-items:center}
+.marks-sources{margin:8px 0 0;padding:0;list-style:none}
+.marks-sources li{padding:10px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink-2)}
+.marks-stage{display:flex;flex-direction:column;align-items:center;min-width:0}
+.marks-stage .kolo-stand{--kolo-w:168px}
+.marks-caption{margin:16px 0 0;max-width:28em;text-align:center;font-size:14px;color:var(--muted)}
+.spec-devices{display:flex;gap:22px;align-items:flex-end;flex-wrap:wrap;margin-top:28px}
+.spec-devices figure{margin:0}
+.spec-devices figcaption{margin-top:8px;font-size:13px;color:var(--muted);text-align:center}
+.spec-devices .kolo-stand{--kolo-w:78px}
 
 /* ---------- Features ---------- */
 .feat-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px}
@@ -263,10 +301,9 @@ footer p{margin:6px 0}
   .ereader-cover{height:52px}
   .ereader-title{font-size:14px;margin-top:8px}
   .ereader-done{margin-top:10px;font-size:11px}
-  .ms{width:108px;height:268px}
-  .ms-title{font-size:13px}
-  .ms-when{font-size:10px}
-  .ms-plank{width:132px;height:12px}
+  .conn .kolo-stand{--kolo-w:96px}
+  .marks-grid{grid-template-columns:minmax(0,1fr);gap:28px}
+  .marks-stage .kolo-stand{--kolo-w:140px}
   .cycle{margin-top:8px;gap:6px}
   .cycle-dots{gap:4px}
   .cycle-dots i{width:6px;height:6px}
@@ -280,7 +317,7 @@ footer p{margin:6px 0}
   .gallery{grid-template-columns:repeat(3,1fr)}
   .feat-head{flex-direction:column;align-items:start}
   .nav ul{display:none}
-  .conn-panel,.conn-steps{grid-template-columns:minmax(0,1fr)}
+  .conn-panel,.conn-steps,.marks-grid{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -299,12 +336,10 @@ footer p{margin:6px 0}
   .zoom .px{height:220px}
   .route{grid-template-columns:1fr;gap:10px}
   .route .badge{justify-self:start}
-  .ms{width:100%;max-width:112px;height:286px}
-  .ms-cover{height:24%}
-  .ms-title{font-size:12px;line-height:1.12}
-  .ms-plank{width:128px}
+  .conn .kolo-stand{--kolo-w:86px}
+  .marks-stage .kolo-stand{--kolo-w:120px}
   .cycle-count{font-size:22px}
-  .app-value{font-size:24px}
+  .app-value,.app-view{font-size:22px}
 }
 </style>
 </head>
@@ -316,6 +351,7 @@ footer p{margin:6px 0}
     <ul>
       <li><a href="#idee">Idee</a></li>
       <li><a href="#so-gehts">So geht’s</a></li>
+      <li><a href="#zitate">Zitate</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#kindle">Kindle-Sync</a></li>
       <li><a href="#faq">FAQ</a></li>
@@ -329,7 +365,7 @@ footer p{margin:6px 0}
     <div class="hero-copy">
       <span class="eyebrow">E-Ink-Objekt für Vielleser · Arbeitstitel</span>
       <h1>Dein Leseregal auf <em class="s">einem</em> Buchrücken.</h1>
-      <p class="lead">Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das nacheinander die Cover der Bücher zeigt, die du gelesen hast – auch die vom Kindle. Ohne Licht, ohne Kabel, monatelang.</p>
+      <p class="lead">Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das nacheinander die Cover der Bücher zeigt, die du gelesen hast – oder eine Markierung daraus. Auch die vom Kindle. Ohne Licht, ohne Kabel, monatelang.</p>
       <div class="cta-row">
         <a href="#warteliste" class="btn btn-primary">Auf die Warteliste
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -345,18 +381,24 @@ footer p{margin:6px 0}
         <div class="bk b1"><span>Das Gewicht der Worte</span></div>
         <div class="bk b2"><span>Nordlicht</span></div>
         <div class="bk b3"><span>Über Ozeane</span></div>
-        <div class="kolo" role="img" aria-label="Kolophon-Buchrücken mit E-Ink-Fenster">
-          <div class="band t1"></div><div class="band t2"></div>
-          <div class="win">
-            <img src="assets/frames/fjord_m0.png" alt="">
-            <img src="assets/frames/atlas_m0.png" alt="">
-            <img src="assets/frames/triest_m0.png" alt="">
-            <img src="assets/frames/salz_m0.png" alt="">
-            <div class="flash"></div>
-            <div class="glare"></div>
+        <div class="kolo-book is-cycle" role="img" aria-label="Kolophon-Buchrücken, der zwischen Cover und Markierung wechselt">
+          <div class="kolo-front">
+            <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
+            <div class="kolo-win">
+              <div class="kolo-screen">
+                <img src="assets/frames/fjord_m0.png" alt="">
+                <div class="kolo-quote"><p class="kolo-q">„Der Fjord hielt still, bis der Satz zu Ende war.“</p><p class="kolo-qmeta">Markierung aus „Die Stille der Fjorde“</p><p class="kolo-qloc">S. 188</p></div>
+                <img src="assets/frames/atlas_m0.png" alt="">
+                <div class="kolo-quote"><p class="kolo-q">„Jede Karte ist eine höfliche Lüge.“</p><p class="kolo-qmeta">Markierung aus „Atlas der Gezeiten“</p><p class="kolo-qloc">S. 42</p></div>
+              </div>
+              <div class="kolo-flash"></div>
+              <div class="kolo-glare"></div>
+            </div>
+            <b class="kolo-mono">K</b>
+            <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
+            <span class="kolo-usbc" aria-hidden="true"></span>
           </div>
-          <div class="mono">K</div>
-          <div class="band b1"></div><div class="band b2"></div>
+          <div class="kolo-side" aria-hidden="true"><div class="kolo-side-spine"><i class="kolo-band t1"></i><i class="kolo-band t2"></i><i class="kolo-band b1"></i><i class="kolo-band b2"></i><span class="kolo-usbc"></span></div><div class="kolo-hatch"><span>Powerbank</span></div></div>
         </div>
         <div class="bk b4"><span>Die Kartografin</span></div>
         <div class="bk b5"><span>Ein Jahr in Wien</span></div>
@@ -418,18 +460,27 @@ footer p{margin:6px 0}
       </div>
       <div class="conn-col">
         <p class="device-kicker">Neuer Rücken</p>
-        <div class="ms" id="mini-spine">
-          <i class="ms-band t1"></i><i class="ms-band t2"></i>
-          <div class="ms-win">
-            <div class="ms-cover" id="spine-cover" style="--cover:#4a5a6a"></div>
-            <p class="ms-title" id="spine-title">Notizen aus dem Zug</p>
-            <p class="ms-when" id="spine-when">gelesen im Juni 2025</p>
-            <div class="ms-flash" id="spine-flash"></div>
+        <div class="kolo-stand" id="demo-stand">
+          <div class="kolo-book" id="demo-book" data-mode="cover">
+            <div class="kolo-front">
+              <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
+              <div class="kolo-win">
+                <div class="kolo-screen" id="spine-screen">
+                  <div class="kolo-cover" id="spine-cover" style="--cover:#4a5a6a"></div>
+                  <p class="kolo-title" id="spine-title">Notizen aus dem Zug</p>
+                  <p class="kolo-when" id="spine-when">gelesen im Juni 2025</p>
+                </div>
+                <div class="kolo-flash" id="spine-flash"></div>
+                <div class="kolo-glare"></div>
+              </div>
+              <b class="kolo-mono">K</b>
+              <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
+              <span class="kolo-usbc" aria-hidden="true"></span>
+            </div>
+            <div class="kolo-side" aria-hidden="true"><div class="kolo-side-spine"><i class="kolo-band t1"></i><i class="kolo-band t2"></i><i class="kolo-band b1"></i><i class="kolo-band b2"></i><span class="kolo-usbc"></span></div><div class="kolo-hatch"><span>Powerbank</span></div></div>
           </div>
-          <b class="ms-mono">K</b>
-          <i class="ms-band b1"></i><i class="ms-band b2"></i>
+          <div class="kolo-plank"></div>
         </div>
-        <div class="ms-plank"></div>
         <p class="device-label">Kolophon im Regal</p>
         <div class="cycle">
           <p class="cycle-count" id="cycle-count">12 <span>/ 12</span></p>
@@ -442,27 +493,78 @@ footer p{margin:6px 0}
     <div class="conn-panel">
       <div>
         <p class="interval-label" id="interval-label">Wechselintervall – stellst du selbst ein</p>
-        <div class="seg" role="radiogroup" aria-labelledby="interval-label">
+        <div class="seg" id="speed-seg" role="radiogroup" aria-labelledby="interval-label">
           <button type="button" role="radio" data-speed="demo" aria-checked="true">Alle 10 Sek. (Demo)</button>
           <button type="button" role="radio" data-speed="hour" aria-checked="false">Stündlich</button>
           <button type="button" role="radio" data-speed="day" aria-checked="false">Täglich</button>
           <button type="button" role="radio" data-speed="week" aria-checked="false">Wöchentlich</button>
         </div>
         <p class="interval-note">In der Demo beschleunigt. Oder per Druck aufs Kapital weiterblättern.</p>
+        <p class="interval-label" id="view-label" style="margin-top:22px">Anzeige: Cover / Zitate / Beides im Wechsel</p>
+        <div class="seg" id="view-seg" role="radiogroup" aria-labelledby="view-label">
+          <button type="button" role="radio" data-view="cover" aria-checked="false">Cover</button>
+          <button type="button" role="radio" data-view="quote" aria-checked="false">Zitate</button>
+          <button type="button" role="radio" data-view="both" aria-checked="true">Beides im Wechsel</button>
+        </div>
       </div>
       <aside class="app-card">
         <span class="eyebrow">App-Einstellung</span>
         <p class="app-kicker">Wechselintervall in der Begleit-App</p>
         <p class="app-value" id="app-value">Alle 10 Sek.</p>
         <p class="app-hint" id="app-hint">In der Demo beschleunigt: 10 Sekunden am Gerät laufen hier in wenigen Sekunden.</p>
+        <p class="app-kicker" style="margin-top:14px">Anzeige</p>
+        <p class="app-view" id="app-view">Beides im Wechsel</p>
       </aside>
     </div>
     <ol class="conn-steps">
       <li><b>Gelesen auf dem Kindle.</b> Das Buch ist fertig – „Gelesen“ steht auf dem Lesegerät, ohne Amazon-Logo und ohne Passwort.</li>
       <li><b>Die Verbindung.</b> Titel und Cover wandern zur Kolophon-App, über Goodreads, Hardcover oder einen einmaligen Export.</li>
-      <li><b>E-Ink im Regal.</b> Der Rücken flackert kurz auf und zeigt Cover, Titel und „gelesen im …“. Dann kommt das nächste Buch.</li>
+      <li><b>E-Ink im Regal.</b> Der Rücken flackert kurz auf und zeigt Cover, Titel, „gelesen im …“ – oder eine Markierung. Dann kommt das nächste Buch.</li>
     </ol>
     <p class="conn-static-note" id="conn-static-note" hidden>Bewegung ist reduziert: die Verbindung steht still, das Intervall bleibt einstellbar.</p>
+  </div>
+</section>
+
+<section id="zitate" class="marks">
+  <div class="wrap marks-grid">
+    <div>
+      <span class="eyebrow">Zitate &amp; Markierungen</span>
+      <h2>Die Stelle, die hängen blieb.</h2>
+      <p class="lead" style="margin-top:18px">Neben dem Cover kann der Rücken den einen Satz zeigen, den du behalten willst. Serifenschrift, darunter klein, aus welchem Buch die Markierung stammt, und die Seite oder Kindle-Position.</p>
+      <p>Die Sätze kommen nur, wenn du sie hergibst: aus dem Amazon-Datenexport, aus Goodreads oder Hardcover, soweit dort Zitate stehen, oder von Hand in der App. Kein Amazon-Passwort, kein Auslesen des Kindles.</p>
+      <ul class="marks-sources">
+        <li>Amazon-Export – Notizen, die du selbst hochlädst</li>
+        <li>Goodreads und Hardcover, wenn die Quelle Zitate hergibt</li>
+        <li>Eigener Eintrag in der Begleit-App</li>
+      </ul>
+    </div>
+    <div class="marks-stage">
+      <div class="kolo-stand">
+        <div class="kolo-book is-cycle frames-2" role="img" aria-label="Kolophon-Rücken im Wechsel zwischen Cover und Markierung">
+          <div class="kolo-front">
+            <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
+            <div class="kolo-win">
+              <div class="kolo-screen">
+                <div class="kolo-quote"><p class="kolo-q">„Der Kaffee kühlte ab, das Gespräch nicht.“</p><p class="kolo-qmeta">Markierung aus „Ein Jahr in Wien“</p><p class="kolo-qloc">S. 64</p></div>
+                <div>
+                  <div class="kolo-cover" style="--cover:#c58f4f"></div>
+                  <p class="kolo-title">Ein Jahr in Wien</p>
+                  <p class="kolo-when">gelesen im September 2025</p>
+                </div>
+              </div>
+              <div class="kolo-flash"></div>
+              <div class="kolo-glare"></div>
+            </div>
+            <b class="kolo-mono">K</b>
+            <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
+            <span class="kolo-usbc" aria-hidden="true"></span>
+          </div>
+          <div class="kolo-side" aria-hidden="true"><div class="kolo-side-spine"><i class="kolo-band t1"></i><i class="kolo-band t2"></i><i class="kolo-band b1"></i><i class="kolo-band b2"></i><span class="kolo-usbc"></span></div><div class="kolo-hatch"><span>Powerbank</span></div></div>
+        </div>
+        <div class="kolo-plank"></div>
+      </div>
+      <p class="marks-caption">Dieselben Proportionen wie im Regal. In der App stellst du ein: nur Cover, nur Zitate, oder beides im Wechsel.</p>
+    </div>
   </div>
 </section>
 
@@ -475,10 +577,11 @@ footer p{margin:6px 0}
     <div class="features">
       <div class="f"><svg viewBox="0 0 32 32"><rect x="10" y="3" width="12" height="26" rx="1.5"/><path d="M13 9h6M13 23h6"/><path d="M4 12l3 4-3 4M28 12l-3 4 3 4"/></svg><h3>Cover-Rotation</h3><p>Stündlich, täglich oder nach deinem Rhythmus. Zufällig, chronologisch oder „Lieblinge zuerst“.</p></div>
       <div class="f"><svg viewBox="0 0 32 32"><path d="M6 6h20M6 6v20M16 10v16M11 26h10"/></svg><h3>Titel &amp; Lesedatum</h3><p>Rückentitel in DIN-Laufrichtung (aufsteigend) oder englisch, dazu „gelesen im August 2026“.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><path d="M8 8h10M8 13h16M8 18h12"/><path d="M6 24h20"/></svg><h3>Zitate &amp; Markierungen</h3><p>Der wichtigste Satz aus dem Buch, mit Herkunft und Seite. Aus Export, Goodreads, Hardcover oder von Hand – nie über dein Amazon-Passwort.</p></div>
       <div class="f"><svg viewBox="0 0 32 32"><rect x="5" y="4" width="9" height="24" rx="1"/><rect x="18" y="4" width="9" height="24" rx="1"/><path d="M7 10h5M20 9v14"/></svg><h3>Zwei Gesichter</h3><p>Cover-Modus mit Bild – oder klassischer Typo-Rücken wie bei einer Gesamtausgabe. Wechsel per Taster.</p></div>
       <div class="f"><svg viewBox="0 0 32 32"><path d="M21 5a11 11 0 1 0 6 16A9 9 0 0 1 21 5z"/></svg><h3>Nachtruhe &amp; Deep Sleep</h3><p>Zwischen den Wechseln schläft das Gerät mit wenigen Mikroampere. Das Bild bleibt ohne Strom stehen.</p></div>
       <div class="f"><svg viewBox="0 0 32 32"><rect x="9" y="8" width="14" height="20" rx="2"/><path d="M16 3v8"/><circle cx="16" cy="18" r="2.5"/></svg><h3>Druck aufs Kapital</h3><p>Ein versteckter Taster oben im Buch: drücken wie beim Herausziehen – und das nächste Buch erscheint.</p></div>
-      <div class="f"><svg viewBox="0 0 32 32"><rect x="4" y="10" width="22" height="12" rx="2"/><path d="M26 14h2v4h-2M8 14h7v4H8z"/></svg><h3>Monate pro Ladung</h3><p>2000-mAh-Akku, USB-C im Fuß. Bei stündlichem Wechsel rechnerisch über ein Jahr; wir versprechen konservativ 6+ Monate.</p></div>
+      <div class="f"><svg viewBox="0 0 32 32"><rect x="4" y="10" width="22" height="12" rx="2"/><path d="M26 14h2v4h-2M8 14h7v4H8z"/></svg><h3>USB-C oder Powerbank</h3><p>USB-C oder optionale einschiebbare Powerbank (10.000 mAh). Der interne Akku bleibt für den Alltag, der Schacht im Fuß für lange Reisen.</p></div>
     </div>
   </div>
 </section>
@@ -514,6 +617,47 @@ footer p{margin:6px 0}
       <span class="eyebrow">Technische Daten</span>
       <h2 style="margin-top:16px">Unter dem Leinen.</h2>
       <p class="lead" style="margin-top:18px">Prototyp-Spezifikation (Rev A). Änderungen bis zur Serie vorbehalten.</p>
+      <div class="spec-devices">
+        <figure>
+          <div class="kolo-stand">
+            <div class="kolo-book" role="img" aria-label="Kolophon von vorn, mit USB-C im Fuß">
+              <div class="kolo-front">
+                <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
+                <div class="kolo-win">
+                  <div class="kolo-screen">
+                    <div class="kolo-cover" style="--cover:#3d5a4c"></div>
+                    <p class="kolo-title">Die Stille der Fjorde</p>
+                    <p class="kolo-when">gelesen im März 2026</p>
+                  </div>
+                  <div class="kolo-glare"></div>
+                </div>
+                <b class="kolo-mono">K</b>
+                <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
+                <span class="kolo-usbc" aria-hidden="true"></span>
+              </div>
+              <div class="kolo-side" aria-hidden="true"><div class="kolo-side-spine"><i class="kolo-band t1"></i><i class="kolo-band t2"></i><i class="kolo-band b1"></i><i class="kolo-band b2"></i><span class="kolo-usbc"></span></div><div class="kolo-hatch"><span>Powerbank</span></div></div>
+            </div>
+            <div class="kolo-plank"></div>
+          </div>
+          <figcaption>Rücken, USB-C im Fuß</figcaption>
+        </figure>
+        <figure>
+          <div class="kolo-stand">
+            <div class="kolo-book is-profile" role="img" aria-label="Kolophon von der Seite, mit Schacht für eine einschiebbare Powerbank">
+              <div class="kolo-front">
+                <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
+                <div class="kolo-win"><div class="kolo-screen"></div><div class="kolo-glare"></div></div>
+                <b class="kolo-mono">K</b>
+                <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
+                <span class="kolo-usbc" aria-hidden="true"></span>
+              </div>
+              <div class="kolo-side"><div class="kolo-side-spine"><i class="kolo-band t1"></i><i class="kolo-band t2"></i><i class="kolo-band b1"></i><i class="kolo-band b2"></i><span class="kolo-usbc"></span></div><div class="kolo-hatch"><span>Powerbank</span></div></div>
+            </div>
+            <div class="kolo-plank"></div>
+          </div>
+          <figcaption>Seite, Schacht im Fuß</figcaption>
+        </figure>
+      </div>
     </div>
     <table>
       <tr><th>Format</th><td>Hardcover-Replik, 240 × 165 × 68 mm, ca. 450 g</td></tr>
@@ -521,10 +665,10 @@ footer p{margin:6px 0}
       <tr><th>Sichtfenster</th><td>49,7 × 141 mm im Buchrücken, entspiegelt</td></tr>
       <tr><th>Prozessor</th><td>ESP32-S3, 16 MB Flash, 8 MB PSRAM, WLAN 2,4 GHz</td></tr>
       <tr><th>Speicher</th><td>ca. 500 Rücken offline (27 kB pro Bild)</td></tr>
-      <tr><th>Akku</th><td>LiPo 2000 mAh, USB-C-Laden (ca. 4 h)<br><span class="small">Laufzeit rechnerisch &gt; 1 Jahr bei 16 Wechseln/Tag; Selbstentladung begrenzt real auf ca. 6–12 Monate</span></td></tr>
+      <tr><th>Strom</th><td>USB-C oder optionale einschiebbare Powerbank (10.000 mAh)<br><span class="small">Interner LiPo 2000 mAh, Laden über USB-C ca. 4 h. Laufzeit rechnerisch &gt; 1 Jahr bei 16 Wechseln/Tag; Selbstentladung begrenzt real auf ca. 6–12 Monate</span></td></tr>
       <tr><th>Bedienung</th><td>Taster im Kapital (weiter) · Taster im Fuß (Modus / Setup)</td></tr>
       <tr><th>Materialien</th><td>Buckram-Leinen, Graukarton, Goldprägung, Innenträger aus PETG</td></tr>
-      <tr><th>Datenquellen</th><td>Goodreads, Hardcover, Amazon-Datenexport, CSV, ISBN</td></tr>
+      <tr><th>Datenquellen</th><td>Goodreads, Hardcover, Amazon-Datenexport, CSV, ISBN. Markierungen nur aus Export, Goodreads, Hardcover oder manueller Eingabe</td></tr>
     </table>
   </div>
 </section>
@@ -543,7 +687,7 @@ footer p{margin:6px 0}
     <div class="routes">
       <div class="route"><span class="badge auto">Automatisch</span><div><h3>Kindle → Goodreads → Kolophon</h3><p>Amazon und Goodreads lassen sich verknüpfen; in der Kindle-App (iOS/Android) landen fertige Bücher automatisch auf „Gelesen“. Kolophon liest dein Goodreads-Regal über den öffentlichen RSS-Feed – täglich, ohne Login.</p></div></div>
       <div class="route"><span class="badge auto">Automatisch</span><div><h3>Hardcover.app</h3><p>Die Goodreads-Alternative hat eine offizielle API. Persönlichen Schlüssel einfügen, fertig – auch private Regale.</p></div></div>
-      <div class="route"><span class="badge once">Einmalig</span><div><h3>Amazon-Datenexport</h3><p>Unter „Meine Daten anfordern“ schickt Amazon dir deine Kindle-Lesesitzungen als ZIP. Hochladen, und Kolophon erkennt deine fertig gelesenen Bücher – ideal für die Jahre davor.</p></div></div>
+      <div class="route"><span class="badge once">Einmalig</span><div><h3>Amazon-Datenexport</h3><p>Unter „Meine Daten anfordern“ schickt Amazon dir deine Kindle-Lesesitzungen als ZIP. Hochladen, und Kolophon erkennt deine fertig gelesenen Bücher – ideal für die Jahre davor. Liegen in dem Export auch Markierungen, können die mit auf den Rücken; wir lesen sie nicht vom Gerät ab.</p></div></div>
       <div class="route"><span class="badge man">Manuell</span><div><h3>ISBN-Scan &amp; CSV</h3><p>Papierbücher, Tolino, Kobo, Bibliothek: per Handykamera scannen oder Goodreads-/StoryGraph-CSV importieren.</p></div></div>
       <div class="route no-go"><span class="badge no">Nur für Bastler</span><div><h3>Jailbreak + KOReader</h3><p>Technisch möglich, aber nicht unser Weg: kann die Garantie gefährden, bricht bei Updates und liefert nur Lesefortschritt, keine sauberen Buchdaten.</p></div></div>
     </div>
@@ -576,10 +720,11 @@ footer p{margin:6px 0}
     <div>
       <details open><summary>Brauche ich einen Kindle?</summary><p>Nein. Kolophon zeigt jedes Buch, das in deiner Lesegeschichte steht – egal ob Kindle, Tolino, Kobo, Hörbuch oder Papier. Für Kindle-Leser haben wir nur besonders bequeme Import-Wege vorbereitet.</p></details>
       <details><summary>Synchronisiert sich Kolophon direkt mit meinem Kindle?</summary><p>Nicht direkt – Amazon bietet dafür keine öffentliche Schnittstelle. Der Weg über Goodreads ist der Standard: Amazon und Goodreads gehören zusammen, und in der Kindle-App lässt sich „Gelesen“ automatisch übertragen. Ältere Bücher holst du einmalig über den Amazon-Datenexport.</p></details>
-      <details><summary>Wie lange hält der Akku?</summary><p>Ein Wechsel kostet nur wenige Sekunden Strom, dazwischen schläft das Gerät mit rund 20 µA. Rechnerisch reicht eine Ladung bei stündlichem Wechsel über ein Jahr; weil Lithium-Akkus sich selbst entladen, versprechen wir 6 Monate und mehr.</p></details>
+      <details><summary>Wie lange hält der Akku?</summary><p>Ein Wechsel kostet nur wenige Sekunden Strom, dazwischen schläft das Gerät mit rund 20 µA. Rechnerisch reicht der interne Akku bei stündlichem Wechsel über ein Jahr; weil Lithium-Akkus sich selbst entladen, versprechen wir 6 Monate und mehr. Für länger: USB-C oder optionale einschiebbare Powerbank (10.000 mAh) im Schacht am Fuß.</p></details>
+      <details><summary>Kann der Rücken Zitate zeigen?</summary><p>Ja. Du wählst in der App Cover, Zitate oder beides im Wechsel. Die Sätze stammen aus dem Amazon-Datenexport, aus Goodreads oder Hardcover, wenn dort Markierungen stehen, oder aus deiner eigenen Eingabe. Ein Amazon-Passwort brauchen wir dafür nicht.</p></details>
       <details><summary>Leuchtet das Display?</summary><p>Nein. E-Ink reflektiert Licht wie Papier und ist im Dunkeln nicht sichtbar – genau wie die Bücher daneben. Dafür blendet es nicht und sieht nie nach Bildschirm aus.</p></details>
       <details><summary>Gibt es Farbe?</summary><p>Die erste Version ist Schwarz-Weiß, weil sie schnell umblättert und Graustufen-Raster am schönsten aussehen. Eine Variante mit Rot und Gelb (gleiches Format) testen wir als Sonderedition.</p></details>
-      <details><summary>Was passiert mit meinen Daten?</summary><p>Wir speichern nur Buchtitel, ISBN und Lesedatum, gehostet in der EU. Kein Amazon-Passwort, kein Tracking im Gerät, Export und Löschung jederzeit.</p></details>
+      <details><summary>Was passiert mit meinen Daten?</summary><p>Wir speichern Buchtitel, ISBN, Lesedatum und – nur wenn du sie freigibst – Markierungen, gehostet in der EU. Kein Amazon-Passwort, kein Tracking im Gerät, Export und Löschung jederzeit.</p></details>
       <details><summary>Kann ich den Einband wählen?</summary><p>Geplant sind drei Leinenfarben (Tinte, Moos, Ochsenblut) und eine Prägung mit deinen Initialen statt des „K“.</p></details>
     </div>
   </div>
@@ -606,19 +751,20 @@ footer p{margin:6px 0}
 
   (function(){
     var books = [
-      {title:"Die Stille der Fjorde", author:"Mara Lind", when:"gelesen im März 2026", cover:"#3d5a4c"},
-      {title:"Atlas der Gezeiten", author:"Jonas Reh", when:"gelesen im Januar 2026", cover:"#1f4e5a"},
-      {title:"Der letzte Sommer in Triest", author:"Elena Varga", when:"gelesen im August 2025", cover:"#8a3a32"},
-      {title:"Kupfer und Salz", author:"Ida Holm", when:"gelesen im November 2025", cover:"#a67c52"},
-      {title:"Das Gewicht der Worte", author:"Paul Kerber", when:"gelesen im Mai 2025", cover:"#5c4a6e"},
-      {title:"Nordlicht", author:"Siri Aalto", when:"gelesen im Februar 2026", cover:"#2d3a4a"},
-      {title:"Über Ozeane", author:"Leander Falk", when:"gelesen im Juli 2025", cover:"#7b8a6e"},
-      {title:"Die Kartografin", author:"Nora Weiss", when:"gelesen im April 2026", cover:"#7d2f25"},
-      {title:"Ein Jahr in Wien", author:"Theo Mark", when:"gelesen im September 2025", cover:"#c58f4f"},
-      {title:"Der Leuchtturmwart", author:"Anja Sol", when:"gelesen im Oktober 2025", cover:"#3f3a35"},
-      {title:"Papier und Salz", author:"Mira Feld", when:"gelesen im Dezember 2025", cover:"#6e4a3a"},
-      {title:"Notizen aus dem Zug", author:"Kim Berger", when:"gelesen im Juni 2025", cover:"#4a5a6a"}
+      {title:"Die Stille der Fjorde", author:"Mara Lind", when:"gelesen im März 2026", cover:"#3d5a4c", quote:"Der Fjord hielt still, bis der Satz zu Ende war.", loc:"S. 188"},
+      {title:"Atlas der Gezeiten", author:"Jonas Reh", when:"gelesen im Januar 2026", cover:"#1f4e5a", quote:"Jede Karte ist eine höfliche Lüge.", loc:"S. 42"},
+      {title:"Der letzte Sommer in Triest", author:"Elena Varga", when:"gelesen im August 2025", cover:"#8a3a32", quote:"Wir ließen das Licht an, für die Stadt.", loc:"S. 231"},
+      {title:"Kupfer und Salz", author:"Ida Holm", when:"gelesen im November 2025", cover:"#a67c52", quote:"Salz merkt sich jede Hand.", loc:"Pos. 1408"},
+      {title:"Das Gewicht der Worte", author:"Paul Kerber", when:"gelesen im Mai 2025", cover:"#5c4a6e", quote:"Ein Wort zu viel, und der Tisch wurde schwer.", loc:"S. 77"},
+      {title:"Nordlicht", author:"Siri Aalto", when:"gelesen im Februar 2026", cover:"#2d3a4a", quote:"Grünes Licht auf dem Schnee, ein zweiter Morgen.", loc:"S. 19"},
+      {title:"Über Ozeane", author:"Leander Falk", when:"gelesen im Juli 2025", cover:"#7b8a6e", quote:"Das Wasser kannte unseren Namen nicht.", loc:"S. 305"},
+      {title:"Die Kartografin", author:"Nora Weiss", when:"gelesen im April 2026", cover:"#7d2f25", quote:"Sie zeichnete die Straße nach dem Gehen.", loc:"S. 112"},
+      {title:"Ein Jahr in Wien", author:"Theo Mark", when:"gelesen im September 2025", cover:"#c58f4f", quote:"Der Kaffee kühlte ab, das Gespräch nicht.", loc:"S. 64"},
+      {title:"Der Leuchtturmwart", author:"Anja Sol", when:"gelesen im Oktober 2025", cover:"#3f3a35", quote:"Er zählte Schiffe, nie die Tage.", loc:"S. 9"},
+      {title:"Papier und Salz", author:"Mira Feld", when:"gelesen im Dezember 2025", cover:"#6e4a3a", quote:"Papier vergisst langsamer als wir.", loc:"Pos. 876"},
+      {title:"Notizen aus dem Zug", author:"Kim Berger", when:"gelesen im Juni 2025", cover:"#4a5a6a", quote:"Zwischen zwei Bahnhöfen passte ein Leben.", loc:"S. 3"}
     ];
+    var viewNames = {cover:"Cover", quote:"Zitate", both:"Beides im Wechsel"};
     var speeds = {
       demo:{ms:4500, value:"Alle 10 Sek.", hint:"In der Demo beschleunigt: 10 Sekunden am Gerät laufen hier in wenigen Sekunden."},
       hour:{ms:8000, value:"Stündlich", hint:"In der Demo beschleunigt: eine Stunde am Gerät, hier wenige Sekunden."},
@@ -634,6 +780,8 @@ footer p{margin:6px 0}
     var reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
     var reduce = reduceMq.matches;
     var speed = "demo";
+    var view = "both";
+    var spineMode = "cover";
     var index = 0;
     var spineIndex = 0;
     var gen = 0;
@@ -656,22 +804,63 @@ footer p{margin:6px 0}
       timers.push(setTimeout(fn, ms));
     }
     function setPhase(name){ stage.dataset.phase = name; }
-    function paintCover(el, book){ el.style.setProperty("--cover", book.cover); }
+    function modeForArrival(){
+      if(view === "both"){
+        spineMode = spineMode === "cover" ? "quote" : "cover";
+        return spineMode;
+      }
+      spineMode = view;
+      return view;
+    }
+    function fillScreen(book, mode){
+      var screen = document.getElementById("spine-screen");
+      screen.replaceChildren();
+      screen.dataset.mode = mode;
+      document.getElementById("demo-book").dataset.mode = mode;
+      if(mode === "quote"){
+        var q = document.createElement("div");
+        q.className = "kolo-quote";
+        var line = document.createElement("p");
+        line.className = "kolo-q";
+        line.textContent = "„" + book.quote + "“";
+        var meta = document.createElement("p");
+        meta.className = "kolo-qmeta";
+        meta.textContent = "Markierung aus „" + book.title + "“";
+        var loc = document.createElement("p");
+        loc.className = "kolo-qloc";
+        loc.textContent = book.loc;
+        q.append(line, meta, loc);
+        screen.appendChild(q);
+      } else {
+        var cover = document.createElement("div");
+        cover.className = "kolo-cover";
+        cover.id = "spine-cover";
+        cover.style.setProperty("--cover", book.cover);
+        var title = document.createElement("p");
+        title.className = "kolo-title";
+        title.id = "spine-title";
+        title.textContent = book.title;
+        var when = document.createElement("p");
+        when.className = "kolo-when";
+        when.id = "spine-when";
+        when.textContent = book.when;
+        screen.append(cover, title, when);
+      }
+    }
     function renderKindle(book){
-      paintCover(document.getElementById("kindle-cover"), book);
+      document.getElementById("kindle-cover").style.setProperty("--cover", book.cover);
       document.getElementById("kindle-title").textContent = book.title;
       document.getElementById("kindle-author").textContent = book.author;
     }
-    function renderSpine(book, flicker){
-      paintCover(document.getElementById("spine-cover"), book);
-      document.getElementById("spine-title").textContent = book.title;
-      document.getElementById("spine-when").textContent = book.when;
+    function renderSpine(book, flicker, mode){
+      fillScreen(book, mode);
       if(flicker && !reduce){
         flash.classList.remove("on");
         void flash.offsetWidth;
         flash.classList.add("on");
       }
-      live.textContent = "Rücken zeigt: " + book.title + ", " + book.when + ", " + (spineIndex + 1) + " von " + books.length;
+      var what = mode === "quote" ? "Markierung aus " + book.title : book.title + ", " + book.when;
+      live.textContent = "Rücken zeigt: " + what + ", " + (spineIndex + 1) + " von " + books.length;
     }
     function renderProgress(i){
       spineIndex = i;
@@ -691,7 +880,8 @@ footer p{margin:6px 0}
       var spec = speeds[speed];
       document.getElementById("app-value").textContent = spec.value;
       document.getElementById("app-hint").textContent = spec.hint;
-      var buttons = stage.parentNode.querySelectorAll("[data-speed]");
+      document.getElementById("app-view").textContent = viewNames[view];
+      var buttons = document.getElementById("speed-seg").querySelectorAll("[data-speed]");
       for(var i = 0; i < buttons.length; i++){
         buttons[i].setAttribute("aria-checked", buttons[i].getAttribute("data-speed") === speed ? "true" : "false");
       }
@@ -703,7 +893,7 @@ footer p{margin:6px 0}
       var book = books[index];
       var prev = (index - 1 + books.length) % books.length;
       renderKindle(book);
-      renderSpine(books[prev], false);
+      renderSpine(books[prev], false, spineMode);
       renderProgress(prev);
       setPhase("read");
       placePacket(0);
@@ -726,7 +916,7 @@ footer p{margin:6px 0}
       later(function(){
         if(my !== gen) return;
         setPhase("flicker");
-        renderSpine(book, true);
+        renderSpine(book, true, modeForArrival());
         renderProgress(index);
         placePacket(1);
       }, arriveAt);
@@ -745,7 +935,7 @@ footer p{margin:6px 0}
       gen++;
       var book = books[index];
       renderKindle(book);
-      renderSpine(book, false);
+      renderSpine(book, false, view === "both" ? spineMode : view);
       renderProgress(index);
       placePacket(0.55);
       setPhase("hold");
@@ -764,23 +954,39 @@ footer p{margin:6px 0}
       if(on) playCycle();
       else { clearMotion(); gen++; }
     }
-    var group = document.querySelector(".seg");
-    group.addEventListener("click", function(e){
-      var btn = e.target.closest("button");
-      if(!btn) return;
-      selectSpeed(btn.getAttribute("data-speed"));
-    });
-    group.addEventListener("keydown", function(e){
-      var dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp") ? -1 : 0;
-      if(!dir) return;
-      e.preventDefault();
-      var buttons = [].slice.call(group.querySelectorAll("[data-speed]"));
-      var current = 0;
-      for(var i = 0; i < buttons.length; i++) if(buttons[i].getAttribute("data-speed") === speed) current = i;
-      var next = buttons[(current + dir + buttons.length) % buttons.length];
-      next.focus();
-      selectSpeed(next.getAttribute("data-speed"));
-    });
+    function bindRadios(group, attr, current, apply){
+      group.addEventListener("click", function(e){
+        var btn = e.target.closest("button");
+        if(!btn || !btn.hasAttribute(attr)) return;
+        apply(btn.getAttribute(attr));
+      });
+      group.addEventListener("keydown", function(e){
+        var dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp") ? -1 : 0;
+        if(!dir) return;
+        e.preventDefault();
+        var buttons = [].slice.call(group.querySelectorAll("[" + attr + "]"));
+        var i = 0;
+        for(var n = 0; n < buttons.length; n++) if(buttons[n].getAttribute("aria-checked") === "true") i = n;
+        var next = buttons[(i + dir + buttons.length) % buttons.length];
+        next.focus();
+        apply(next.getAttribute(attr));
+      });
+    }
+    function selectView(key){
+      if(!viewNames[key]) return;
+      view = key;
+      spineMode = key === "quote" ? "quote" : "cover";
+      var buttons = document.getElementById("view-seg").querySelectorAll("[data-view]");
+      for(var i = 0; i < buttons.length; i++){
+        buttons[i].setAttribute("aria-checked", buttons[i].getAttribute("data-view") === key ? "true" : "false");
+      }
+      document.getElementById("app-view").textContent = viewNames[key];
+      renderSpine(books[spineIndex], !reduce, spineMode);
+      if(reduce) showStatic();
+      else if(playing) playCycle();
+    }
+    bindRadios(document.getElementById("speed-seg"), "data-speed", speed, selectSpeed);
+    bindRadios(document.getElementById("view-seg"), "data-view", view, selectView);
     if(reduce){
       document.getElementById("conn-static-note").hidden = false;
       showCard();
