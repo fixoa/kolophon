@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kolophon – dein Leseregal auf einem Buchrücken</title>
-<meta name="description" content="Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das die Cover der Bücher zeigt, die du gelesen hast – auch die vom Kindle.">
-<meta property="og:title" content="Kolophon – dein Leseregal auf einem Buchrücken">
+<title>Memento – dein Leseregal auf einem Buchrücken</title>
+<meta name="description" content="Memento sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das die Cover der Bücher zeigt, die du gelesen hast – auch die vom Kindle.">
+<meta property="og:title" content="Memento – dein Leseregal auf einem Buchrücken">
 <meta property="og:description" content="Ein Hardcover mit E-Ink-Rücken, der die Cover deiner gelesenen Bücher zeigt.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
@@ -59,7 +59,8 @@ section{padding:110px 0}
 .hero-grid>*,.idea-grid>*,.specs-grid>*,.sync-grid>*,.faq-grid>*,.zoom>*{min-width:0}
 .hero-copy{padding-bottom:120px}
 .hero-copy .eyebrow{margin-bottom:26px;display:block}
-.hero-copy h1{margin-bottom:26px}
+.hero-copy h1{margin-bottom:10px}
+.memento-line{margin:0 0 22px;font:italic 400 clamp(15px,1.35vw,17px)/1.45 var(--serif);color:var(--muted)}
 .hero-copy .lead{margin-bottom:34px}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .note{font-size:13px;color:var(--muted);margin-top:18px}
@@ -78,7 +79,7 @@ section{padding:110px 0}
 .b5{width:44px;height:372px;background:#c58f4f;color:#3b2a16}.b5 span{color:#2c1f10}
 .b6{width:30px;height:330px;background:#3f3a35;color:#d8c9a8}
 .lean{transform:rotate(-7deg);transform-origin:bottom left;margin-left:10px}
-/* Ein Kolophon-Buch: Rücken 68×240 mm, Fenster 49,7×141 mm (GDEY0579T93) */
+/* Ein Memento-Buch: Rücken 68×240 mm, Fenster 49,7×141 mm (GDEY0579T93) */
 .kolo-book{position:relative;width:var(--kolo-w,128px);max-width:100%;height:auto;aspect-ratio:68/240;flex:none}
 .kolo-front,.kolo-side{position:absolute;inset:0}
 .kolo-book.is-profile{width:calc(var(--kolo-w,128px) * 165 / 68);aspect-ratio:165/240}
@@ -347,7 +348,7 @@ footer p{margin:6px 0}
 
 <nav class="nav">
   <div class="wrap">
-    <a href="#top" class="logo"><i></i>Kolophon</a>
+    <a href="#top" class="logo"><i></i>Memento</a>
     <ul>
       <li><a href="#idee">Idee</a></li>
       <li><a href="#so-gehts">So geht’s</a></li>
@@ -365,7 +366,8 @@ footer p{margin:6px 0}
     <div class="hero-copy">
       <span class="eyebrow">E-Ink-Objekt für Vielleser · Arbeitstitel</span>
       <h1>Dein Leseregal auf <em class="s">einem</em> Buchrücken.</h1>
-      <p class="lead">Kolophon sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das nacheinander die Cover der Bücher zeigt, die du gelesen hast – oder eine Markierung daraus. Auch die vom Kindle. Ohne Licht, ohne Kabel, monatelang.</p>
+      <p class="memento-line">Memento — erinnere dich an jedes Buch.</p>
+      <p class="lead">Memento sieht aus wie ein Hardcover im Regal. Sein Rücken ist ein E-Ink-Display, das nacheinander die Cover der Bücher zeigt, die du gelesen hast – oder eine Markierung daraus. Auch die vom Kindle. Ohne Licht, ohne Kabel, monatelang.</p>
       <div class="cta-row">
         <a href="#warteliste" class="btn btn-primary">Auf die Warteliste
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -373,7 +375,7 @@ footer p{margin:6px 0}
       </div>
       <p class="note">Geplanter Preis: 149 € · Early Bird 129 € · Konzeptphase, noch nicht bestellbar</p>
     </div>
-    <div class="scene" aria-label="Illustration: Bücherregal mit dem Kolophon-Buch, dessen Rücken wechselnde Cover zeigt">
+    <div class="scene" aria-label="Illustration: Bücherregal mit dem Memento-Buch, dessen Rücken wechselnde Cover zeigt">
       <div class="wall"></div>
       <div class="tag t-a"><b>5,79″ E-Ink</b>792 × 272 px im Rücken</div>
       <div class="tag t-b"><b>Wechselt stündlich</b>oder per Druck aufs Kapital</div>
@@ -381,7 +383,7 @@ footer p{margin:6px 0}
         <div class="bk b1"><span>Das Gewicht der Worte</span></div>
         <div class="bk b2"><span>Nordlicht</span></div>
         <div class="bk b3"><span>Über Ozeane</span></div>
-        <div class="kolo-book is-cycle" role="img" aria-label="Kolophon-Buchrücken, der zwischen Cover und Markierung wechselt">
+        <div class="kolo-book is-cycle" role="img" aria-label="Memento-Buchrücken, der zwischen Cover und Markierung wechselt">
           <div class="kolo-front">
             <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
             <div class="kolo-win">
@@ -394,7 +396,7 @@ footer p{margin:6px 0}
               <div class="kolo-flash"></div>
               <div class="kolo-glare"></div>
             </div>
-            <b class="kolo-mono">K</b>
+            <b class="kolo-mono">M</b>
             <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
             <span class="kolo-usbc" aria-hidden="true"></span>
           </div>
@@ -418,7 +420,7 @@ footer p{margin:6px 0}
     </div>
     <div>
       <p class="lead">Wer digital liest, liest oft mehr – aber nichts davon steht im Raum. Keine Rücken, an denen der Blick hängen bleibt, kein Gesprächsanfang, keine Erinnerung im Vorbeigehen.</p>
-      <p>Kolophon bringt deine gelesenen Bücher zurück ins Regal: als ein einziges, echtes Hardcover zwischen deinen Papierbüchern. Sein Rücken blättert langsam durch deine Lesegeschichte – Cover, Titel und wann du es gelesen hast. E-Ink braucht nur beim Umblättern Strom und sieht aus wie bedrucktes Papier, nicht wie ein Bildschirm.</p>
+      <p>Memento bringt deine gelesenen Bücher zurück ins Regal: als ein einziges, echtes Hardcover zwischen deinen Papierbüchern. Sein Rücken blättert langsam durch deine Lesegeschichte – Cover, Titel und wann du es gelesen hast. E-Ink braucht nur beim Umblättern Strom und sieht aus wie bedrucktes Papier, nicht wie ein Bildschirm.</p>
       <div class="stats">
         <div><b>1</b><span>Buchrücken für deine ganze Lesegeschichte</span></div>
         <div><b>~500</b><span>Cover im Gerät gespeichert</span></div>
@@ -432,7 +434,7 @@ footer p{margin:6px 0}
   <div class="wrap">
     <span class="eyebrow">So funktioniert die Verbindung</span>
     <h2>Ein fertiges Buch wandert vom Kindle ins Regal.</h2>
-    <p class="lead" style="margin-top:18px">Sobald du ausgelesen hast, holt Kolophon Titel und Cover und setzt sie auf den E-Ink-Rücken. Danach wechseln die Titel von selbst – im Intervall, das du in der App einstellst.</p>
+    <p class="lead" style="margin-top:18px">Sobald du ausgelesen hast, holt Memento Titel und Cover und setzt sie auf den E-Ink-Rücken. Danach wechseln die Titel von selbst – im Intervall, das du in der App einstellst.</p>
     <div class="conn-stage" id="conn-stage" data-phase="hold">
       <div class="conn-col">
         <p class="device-kicker">Gerade ausgelesen</p>
@@ -473,7 +475,7 @@ footer p{margin:6px 0}
                 <div class="kolo-flash" id="spine-flash"></div>
                 <div class="kolo-glare"></div>
               </div>
-              <b class="kolo-mono">K</b>
+              <b class="kolo-mono">M</b>
               <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
               <span class="kolo-usbc" aria-hidden="true"></span>
             </div>
@@ -481,7 +483,7 @@ footer p{margin:6px 0}
           </div>
           <div class="kolo-plank"></div>
         </div>
-        <p class="device-label">Kolophon im Regal</p>
+        <p class="device-label">Memento im Regal</p>
         <div class="cycle">
           <p class="cycle-count" id="cycle-count">12 <span>/ 12</span></p>
           <p class="cycle-caption">Titel wechseln auf dem Rücken</p>
@@ -518,7 +520,7 @@ footer p{margin:6px 0}
     </div>
     <ol class="conn-steps">
       <li><b>Gelesen auf dem Kindle.</b> Das Buch ist fertig – „Gelesen“ steht auf dem Lesegerät, ohne Amazon-Logo und ohne Passwort.</li>
-      <li><b>Die Verbindung.</b> Titel und Cover wandern zur Kolophon-App, über Goodreads, Hardcover oder einen einmaligen Export.</li>
+      <li><b>Die Verbindung.</b> Titel und Cover wandern zur Memento-App, über Goodreads, Hardcover oder einen einmaligen Export.</li>
       <li><b>E-Ink im Regal.</b> Der Rücken flackert kurz auf und zeigt Cover, Titel, „gelesen im …“ – oder eine Markierung. Dann kommt das nächste Buch.</li>
     </ol>
     <p class="conn-static-note" id="conn-static-note" hidden>Bewegung ist reduziert: die Verbindung steht still, das Intervall bleibt einstellbar.</p>
@@ -540,7 +542,7 @@ footer p{margin:6px 0}
     </div>
     <div class="marks-stage">
       <div class="kolo-stand">
-        <div class="kolo-book is-cycle frames-2" role="img" aria-label="Kolophon-Rücken im Wechsel zwischen Cover und Markierung">
+        <div class="kolo-book is-cycle frames-2" role="img" aria-label="Memento-Rücken im Wechsel zwischen Cover und Markierung">
           <div class="kolo-front">
             <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
             <div class="kolo-win">
@@ -555,7 +557,7 @@ footer p{margin:6px 0}
               <div class="kolo-flash"></div>
               <div class="kolo-glare"></div>
             </div>
-            <b class="kolo-mono">K</b>
+            <b class="kolo-mono">M</b>
             <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
             <span class="kolo-usbc" aria-hidden="true"></span>
           </div>
@@ -592,7 +594,7 @@ footer p{margin:6px 0}
   <div class="wrap">
     <span class="eyebrow">Auf dem Display</span>
     <h2 style="margin-top:16px;max-width:16em">So sieht dein Regal auf E-Ink aus.</h2>
-    <p class="lead" style="margin-top:18px">Echte Renderings des Kolophon-Renderers in 272 × 792 Pixeln, 1 Bit, gerastert. Die Bücher sind erfunden – deine werden es nicht sein.</p>
+    <p class="lead" style="margin-top:18px">Echte Renderings des Memento-Renderers in 272 × 792 Pixeln, 1 Bit, gerastert. Die Bücher sind erfunden – deine werden es nicht sein.</p>
     <div class="gallery">
       <figure><div class="frame"><img src="assets/frames/fjord_m0.png" alt="E-Ink-Rücken: Die Stille der Fjorde"></div><figcaption>Cover-Modus</figcaption></figure>
       <figure><div class="frame"><img src="assets/frames/atlas_m0.png" alt="E-Ink-Rücken: Atlas der Gezeiten"></div><figcaption>Cover-Modus</figcaption></figure>
@@ -620,7 +622,7 @@ footer p{margin:6px 0}
       <div class="spec-devices">
         <figure>
           <div class="kolo-stand">
-            <div class="kolo-book" role="img" aria-label="Kolophon von vorn, mit USB-C im Fuß">
+            <div class="kolo-book" role="img" aria-label="Memento von vorn, mit USB-C im Fuß">
               <div class="kolo-front">
                 <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
                 <div class="kolo-win">
@@ -631,7 +633,7 @@ footer p{margin:6px 0}
                   </div>
                   <div class="kolo-glare"></div>
                 </div>
-                <b class="kolo-mono">K</b>
+                <b class="kolo-mono">M</b>
                 <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
                 <span class="kolo-usbc" aria-hidden="true"></span>
               </div>
@@ -643,11 +645,11 @@ footer p{margin:6px 0}
         </figure>
         <figure>
           <div class="kolo-stand">
-            <div class="kolo-book is-profile" role="img" aria-label="Kolophon von der Seite, mit Schacht für eine einschiebbare Powerbank">
+            <div class="kolo-book is-profile" role="img" aria-label="Memento von der Seite, mit Schacht für eine einschiebbare Powerbank">
               <div class="kolo-front">
                 <i class="kolo-band t1"></i><i class="kolo-band t2"></i>
                 <div class="kolo-win"><div class="kolo-screen"></div><div class="kolo-glare"></div></div>
-                <b class="kolo-mono">K</b>
+                <b class="kolo-mono">M</b>
                 <i class="kolo-band b1"></i><i class="kolo-band b2"></i>
                 <span class="kolo-usbc" aria-hidden="true"></span>
               </div>
@@ -685,9 +687,9 @@ footer p{margin:6px 0}
       </div>
     </div>
     <div class="routes">
-      <div class="route"><span class="badge auto">Automatisch</span><div><h3>Kindle → Goodreads → Kolophon</h3><p>Amazon und Goodreads lassen sich verknüpfen; in der Kindle-App (iOS/Android) landen fertige Bücher automatisch auf „Gelesen“. Kolophon liest dein Goodreads-Regal über den öffentlichen RSS-Feed – täglich, ohne Login.</p></div></div>
+      <div class="route"><span class="badge auto">Automatisch</span><div><h3>Kindle → Goodreads → Memento</h3><p>Amazon und Goodreads lassen sich verknüpfen; in der Kindle-App (iOS/Android) landen fertige Bücher automatisch auf „Gelesen“. Memento liest dein Goodreads-Regal über den öffentlichen RSS-Feed – täglich, ohne Login.</p></div></div>
       <div class="route"><span class="badge auto">Automatisch</span><div><h3>Hardcover.app</h3><p>Die Goodreads-Alternative hat eine offizielle API. Persönlichen Schlüssel einfügen, fertig – auch private Regale.</p></div></div>
-      <div class="route"><span class="badge once">Einmalig</span><div><h3>Amazon-Datenexport</h3><p>Unter „Meine Daten anfordern“ schickt Amazon dir deine Kindle-Lesesitzungen als ZIP. Hochladen, und Kolophon erkennt deine fertig gelesenen Bücher – ideal für die Jahre davor. Liegen in dem Export auch Markierungen, können die mit auf den Rücken; wir lesen sie nicht vom Gerät ab.</p></div></div>
+      <div class="route"><span class="badge once">Einmalig</span><div><h3>Amazon-Datenexport</h3><p>Unter „Meine Daten anfordern“ schickt Amazon dir deine Kindle-Lesesitzungen als ZIP. Hochladen, und Memento erkennt deine fertig gelesenen Bücher – ideal für die Jahre davor. Liegen in dem Export auch Markierungen, können die mit auf den Rücken; wir lesen sie nicht vom Gerät ab.</p></div></div>
       <div class="route"><span class="badge man">Manuell</span><div><h3>ISBN-Scan &amp; CSV</h3><p>Papierbücher, Tolino, Kobo, Bibliothek: per Handykamera scannen oder Goodreads-/StoryGraph-CSV importieren.</p></div></div>
       <div class="route no-go"><span class="badge no">Nur für Bastler</span><div><h3>Jailbreak + KOReader</h3><p>Technisch möglich, aber nicht unser Weg: kann die Garantie gefährden, bricht bei Updates und liefert nur Lesefortschritt, keine sauberen Buchdaten.</p></div></div>
     </div>
@@ -699,12 +701,12 @@ footer p{margin:6px 0}
     <span class="eyebrow">Warteliste</span>
     <h2>Sei dabei, wenn die ersten 100 Bücher gebunden werden.</h2>
     <p class="lead">Early-Bird-Preis 129 € statt 149 €. Keine Zahlung, kein Spam – nur eine Mail, wenn es losgeht.</p>
-    <form id="wl" action="mailto:hallo@kolophon.example?subject=Kolophon%20Warteliste" method="post" enctype="text/plain">
+    <form id="wl" action="mailto:hallo@memento.example?subject=Memento%20Warteliste" method="post" enctype="text/plain">
       <div><label for="name">Vorname</label><input id="name" name="Vorname" autocomplete="given-name" placeholder="Anna"></div>
       <div><label for="mail">E-Mail</label><input id="mail" name="E-Mail" type="email" required autocomplete="email" placeholder="anna@beispiel.at"></div>
       <div class="full"><label for="src">Wo liest du hauptsächlich?</label>
         <select id="src" name="Lesequelle"><option>Kindle</option><option>Tolino</option><option>Kobo</option><option>Papier</option><option>Gemischt</option></select></div>
-      <label class="consent full"><input type="checkbox" required> Ich möchte per E-Mail informiert werden, wenn Kolophon bestellbar ist. Abmeldung jederzeit.</label>
+      <label class="consent full"><input type="checkbox" required> Ich möchte per E-Mail informiert werden, wenn Memento bestellbar ist. Abmeldung jederzeit.</label>
       <div class="full"><button class="btn btn-primary" type="submit">Platz reservieren</button></div>
     </form>
     <span class="placeholder">Platzhalter: Das Formular ist noch nicht an einen Newsletter-Dienst angebunden und öffnet nur dein Mailprogramm.</span>
@@ -718,14 +720,14 @@ footer p{margin:6px 0}
   <div class="wrap faq-grid">
     <div><span class="eyebrow">FAQ</span><h2 style="margin-top:16px">Gute Fragen.</h2></div>
     <div>
-      <details open><summary>Brauche ich einen Kindle?</summary><p>Nein. Kolophon zeigt jedes Buch, das in deiner Lesegeschichte steht – egal ob Kindle, Tolino, Kobo, Hörbuch oder Papier. Für Kindle-Leser haben wir nur besonders bequeme Import-Wege vorbereitet.</p></details>
-      <details><summary>Synchronisiert sich Kolophon direkt mit meinem Kindle?</summary><p>Nicht direkt – Amazon bietet dafür keine öffentliche Schnittstelle. Der Weg über Goodreads ist der Standard: Amazon und Goodreads gehören zusammen, und in der Kindle-App lässt sich „Gelesen“ automatisch übertragen. Ältere Bücher holst du einmalig über den Amazon-Datenexport.</p></details>
+      <details open><summary>Brauche ich einen Kindle?</summary><p>Nein. Memento zeigt jedes Buch, das in deiner Lesegeschichte steht – egal ob Kindle, Tolino, Kobo, Hörbuch oder Papier. Für Kindle-Leser haben wir nur besonders bequeme Import-Wege vorbereitet.</p></details>
+      <details><summary>Synchronisiert sich Memento direkt mit meinem Kindle?</summary><p>Nicht direkt – Amazon bietet dafür keine öffentliche Schnittstelle. Der Weg über Goodreads ist der Standard: Amazon und Goodreads gehören zusammen, und in der Kindle-App lässt sich „Gelesen“ automatisch übertragen. Ältere Bücher holst du einmalig über den Amazon-Datenexport.</p></details>
       <details><summary>Wie lange hält der Akku?</summary><p>Ein Wechsel kostet nur wenige Sekunden Strom, dazwischen schläft das Gerät mit rund 20 µA. Rechnerisch reicht der interne Akku bei stündlichem Wechsel über ein Jahr; weil Lithium-Akkus sich selbst entladen, versprechen wir 6 Monate und mehr. Für länger: USB-C oder optionale einschiebbare Powerbank (10.000 mAh) im Schacht am Fuß.</p></details>
       <details><summary>Kann der Rücken Zitate zeigen?</summary><p>Ja. Du wählst in der App Cover, Zitate oder beides im Wechsel. Die Sätze stammen aus dem Amazon-Datenexport, aus Goodreads oder Hardcover, wenn dort Markierungen stehen, oder aus deiner eigenen Eingabe. Ein Amazon-Passwort brauchen wir dafür nicht.</p></details>
       <details><summary>Leuchtet das Display?</summary><p>Nein. E-Ink reflektiert Licht wie Papier und ist im Dunkeln nicht sichtbar – genau wie die Bücher daneben. Dafür blendet es nicht und sieht nie nach Bildschirm aus.</p></details>
       <details><summary>Gibt es Farbe?</summary><p>Die erste Version ist Schwarz-Weiß, weil sie schnell umblättert und Graustufen-Raster am schönsten aussehen. Eine Variante mit Rot und Gelb (gleiches Format) testen wir als Sonderedition.</p></details>
       <details><summary>Was passiert mit meinen Daten?</summary><p>Wir speichern Buchtitel, ISBN, Lesedatum und – nur wenn du sie freigibst – Markierungen, gehostet in der EU. Kein Amazon-Passwort, kein Tracking im Gerät, Export und Löschung jederzeit.</p></details>
-      <details><summary>Kann ich den Einband wählen?</summary><p>Geplant sind drei Leinenfarben (Tinte, Moos, Ochsenblut) und eine Prägung mit deinen Initialen statt des „K“.</p></details>
+      <details><summary>Kann ich den Einband wählen?</summary><p>Geplant sind drei Leinenfarben (Tinte, Moos, Ochsenblut) und eine Prägung mit deinen Initialen statt des „M“.</p></details>
     </div>
   </div>
 </section>
@@ -733,8 +735,8 @@ footer p{margin:6px 0}
 <footer>
   <div class="wrap">
     <div>
-      <a href="#top" class="logo"><i></i>Kolophon</a>
-      <p style="margin-top:14px;max-width:30em">Konzeptstudie 2026 · Wien. „Kolophon“ ist ein Arbeitstitel. Alle gezeigten Bücher sind erfunden.</p>
+      <a href="#top" class="logo"><i></i>Memento</a>
+      <p style="margin-top:14px;max-width:30em">Konzeptstudie 2026 · Wien. „Memento“ ist ein Arbeitstitel. Alle gezeigten Bücher sind erfunden.</p>
     </div>
     <div>
       <p>Cover-Daten künftig u. a. über <a href="https://openlibrary.org" rel="noopener">Open Library</a> und Google Books.</p>
