@@ -110,17 +110,73 @@ section{padding:110px 0}
 .stats span{font-size:14px;color:var(--muted)}
 .quote{font:400 italic 26px/1.4 var(--serif);color:var(--ink-2);border-left:2px solid var(--accent);padding-left:24px;margin:28px 0 0}
 
-/* ---------- Steps ---------- */
-.dark{background:var(--cloth);color:#efe7d8;background-image:repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px)}
-.dark .eyebrow{color:var(--gold)}
-.dark .lead{color:#c9c0b0}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;counter-reset:s}
-.step{border-top:1px solid rgba(239,231,216,.22);padding-top:26px}
-.step .n{font:500 15px/1 var(--serif);color:var(--gold);letter-spacing:.1em}
-.step h3{margin:16px 0 10px;color:#fbf5ea}
-.step p{color:#c9c0b0;font-size:16px}
-.step .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.chip{font:500 12px/1 var(--sans);padding:7px 10px;border-radius:999px;border:1px solid rgba(239,231,216,.25);color:#e6dccb}
+/* ---------- Verbindung ---------- */
+.conn{background:var(--paper-2);overflow-x:clip}
+.conn h2{margin-top:16px;max-width:16em}
+.conn-stage{display:grid;grid-template-columns:minmax(0,230px) minmax(80px,1fr) minmax(0,230px);gap:12px;align-items:center;margin-top:48px}
+.conn-col{min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center}
+.device-kicker{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.device-label{margin:12px 0 0;font:600 14px/1.3 var(--sans);color:var(--ink)}
+.ereader{width:min(220px,100%);background:#2a2724;border-radius:18px;padding:14px 14px 18px;box-shadow:0 18px 30px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(255,255,255,.06)}
+.ereader-screen{background:var(--eink);border-radius:4px;min-height:248px;padding:16px 14px 18px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.18);display:flex;flex-direction:column}
+.ereader-cover{height:92px;border-radius:2px;background:linear-gradient(155deg, rgba(255,255,255,.28), transparent 42%), var(--cover,#3d5a4c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.ereader-title{font:560 18px/1.15 var(--serif);margin:12px 0 0;letter-spacing:-.015em}
+.ereader-author{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.ereader-done{align-self:flex-start;margin-top:auto;font:600 12px/1 var(--sans);letter-spacing:.03em;color:#fff8ef;border:1.5px solid var(--accent);border-radius:999px;padding:6px 9px;background:var(--accent)}
+.conn-stage[data-phase="read"] .ereader-done{background:var(--accent);color:#fff8ef}
+.conn-bridge{position:relative;height:72px;min-width:0}
+.conn-svg{width:100%;height:100%;display:block}
+.conn-line{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-dasharray:2 7;stroke-linecap:round;opacity:.9}
+.conn-packet{position:absolute;z-index:2;left:0;top:50%;width:36px;height:36px;display:grid;place-items:center;background:#fffaf2;border:1.5px solid var(--accent);border-radius:50%;color:var(--accent);box-shadow:0 8px 16px -12px rgba(0,0,0,.5);transform:translate(-50%,-50%)}
+.ms{position:relative;width:150px;height:392px;background:
+  repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0 1px, transparent 1px 3px), var(--cloth);
+  border-radius:6px 6px 2px 2px;box-shadow:inset -10px 0 14px -8px rgba(0,0,0,.55), inset 8px 0 10px -8px rgba(255,255,255,.12), 0 16px 26px -18px rgba(0,0,0,.45)}
+.ms-band{position:absolute;left:14px;right:14px;height:2px;background:var(--gold)}
+.ms-band.t1{top:16px}.ms-band.t2{top:24px;height:1px;opacity:.7}
+.ms-band.b1{bottom:24px;height:1px;opacity:.7}.ms-band.b2{bottom:16px}
+.ms-win{position:absolute;left:50%;transform:translateX(-50%);top:13%;width:78%;height:70%;background:var(--eink);overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.28);outline:1px solid rgba(193,154,87,.6);outline-offset:4px}
+.ms-cover{height:34%;margin:8px 8px 0;border-radius:2px;background:linear-gradient(160deg, rgba(255,255,255,.3), transparent 46%), var(--cover,#3d5a4c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.22)}
+.ms-title{font:560 15px/1.15 var(--serif);margin:8px 8px 0;letter-spacing:-.01em}
+.ms-when{font-size:11px;line-height:1.3;color:var(--ink-2);margin:5px 8px 0}
+.ms-flash{position:absolute;inset:0;background:#1c1b18;opacity:0;pointer-events:none}
+.ms-flash.on{animation:einkflick .42s linear}
+.ms-mono{position:absolute;bottom:30px;left:0;right:0;text-align:center;font:600 18px/1 var(--serif);color:var(--gold)}
+.ms-plank{width:190px;height:16px;margin-top:-2px;background:linear-gradient(#b48a5c,#97704a);border-radius:2px;box-shadow:0 10px 16px -12px rgba(60,40,20,.5)}
+.cycle{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.cycle-count{margin:0;font:500 28px/1 var(--serif);letter-spacing:.02em}
+.cycle-count span{color:var(--muted);font-size:18px}
+.cycle-caption{margin:0;font-size:12px;color:var(--muted)}
+.cycle-dots{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:210px}
+.cycle-dots i{width:8px;height:8px;border-radius:50%;background:rgba(31,29,26,.18)}
+.cycle-dots i.on{background:var(--accent)}
+.conn-panel{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(220px,.8fr);gap:22px;margin-top:42px;align-items:stretch}
+.interval-label{font:600 16px/1.35 var(--sans);margin:0 0 12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{flex:1 1 9.2em;min-width:0;font:600 14px/1.25 var(--sans);padding:12px 12px;border-radius:999px;border:1.5px solid var(--line);background:#fffaf2;color:var(--ink-2);cursor:pointer;text-align:center}
+.seg button[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:#fff8ef}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.interval-note{margin:12px 0 0;font-size:13.5px;color:var(--muted);max-width:40em}
+.app-card{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:var(--r);padding:18px 20px 16px;min-width:0}
+.app-card .eyebrow{display:block;margin-bottom:8px}
+.app-kicker{margin:0;font-size:13px;color:var(--muted)}
+.app-value{margin:6px 0 0;font:500 28px/1.1 var(--serif)}
+.app-hint{margin:8px 0 0;font-size:13.5px;color:var(--ink-2)}
+.conn-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:36px 0 0;padding:0}
+.conn-steps li{margin:0;padding-top:14px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-2)}
+.conn-steps b{display:block;font:600 15px/1.3 var(--sans);color:var(--ink);margin-bottom:4px}
+.conn-static-note{margin:18px 0 0;font-size:13.5px;color:var(--muted)}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@keyframes einkflick{0%{opacity:.92}35%{opacity:0}50%{opacity:.45}100%{opacity:0}}
+@keyframes readping{0%{box-shadow:0 0 0 0 rgba(166,61,42,.4)}100%{box-shadow:0 0 0 10px rgba(166,61,42,0)}}
+@keyframes linedash{to{stroke-dashoffset:-28}}
+@media (prefers-reduced-motion: no-preference){
+  .conn-stage[data-phase="read"] .ereader-done{animation:readping .7s ease-out 1}
+  .conn-stage[data-phase="travel"] .conn-line{animation:linedash .9s linear infinite}
+}
+@media (prefers-reduced-motion: reduce){
+  .ms-flash{display:none}
+  .conn-packet{left:50%}
+}
 
 /* ---------- Features ---------- */
 .feat-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:54px}
@@ -195,6 +251,27 @@ footer a{color:#e8dfcf}
 footer p{margin:6px 0}
 
 /* ---------- Responsive ---------- */
+@media (max-width:860px){
+  .conn-stage{grid-template-columns:minmax(0,1.05fr) minmax(52px,.7fr) minmax(0,.95fr);gap:6px;align-items:center;margin-top:28px}
+  .conn-bridge{height:52px}
+  .conn-packet{width:30px;height:30px}
+  .conn-packet svg{width:16px;height:16px}
+  .device-kicker{font-size:9px;letter-spacing:.06em;margin-bottom:8px}
+  .device-label{font-size:12px;margin-top:8px}
+  .ereader{border-radius:12px;padding:8px 8px 10px}
+  .ereader-screen{min-height:0;padding:8px}
+  .ereader-cover{height:52px}
+  .ereader-title{font-size:14px;margin-top:8px}
+  .ereader-done{margin-top:10px;font-size:11px}
+  .ms{width:108px;height:268px}
+  .ms-title{font-size:13px}
+  .ms-when{font-size:10px}
+  .ms-plank{width:132px;height:12px}
+  .cycle{margin-top:8px;gap:6px}
+  .cycle-dots{gap:4px}
+  .cycle-dots i{width:6px;height:6px}
+  .conn-panel{grid-template-columns:minmax(0,1fr)}
+}
 @media (max-width:980px){
   .hero-grid,.idea-grid,.specs-grid,.sync-grid,.faq-grid,.zoom{grid-template-columns:minmax(0,1fr);gap:40px}
   .hero-copy{padding-bottom:10px}
@@ -203,6 +280,7 @@ footer p{margin:6px 0}
   .gallery{grid-template-columns:repeat(3,1fr)}
   .feat-head{flex-direction:column;align-items:start}
   .nav ul{display:none}
+  .conn-panel,.conn-steps{grid-template-columns:minmax(0,1fr)}
 }
 @media (max-width:640px){
   body{font-size:16px}
@@ -221,6 +299,12 @@ footer p{margin:6px 0}
   .zoom .px{height:220px}
   .route{grid-template-columns:1fr;gap:10px}
   .route .badge{justify-self:start}
+  .ms{width:100%;max-width:112px;height:286px}
+  .ms-cover{height:24%}
+  .ms-title{font-size:12px;line-height:1.12}
+  .ms-plank{width:128px}
+  .cycle-count{font-size:22px}
+  .app-value{font-size:24px}
 }
 </style>
 </head>
@@ -302,30 +386,83 @@ footer p{margin:6px 0}
   </div>
 </section>
 
-<section class="dark" id="so-gehts">
+<section class="conn" id="so-gehts">
   <div class="wrap">
-    <span class="eyebrow">So funktioniert’s</span>
-    <h2 style="margin-top:16px;max-width:15em">In drei Schritten vom Kindle ins Regal.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="n">01</div>
-        <h3>Lesegeschichte verbinden</h3>
-        <p>In der Kolophon-App verknüpfst du die Quelle, in der deine gelesenen Bücher stehen. Kindle-Leser verbinden ihr Goodreads-Konto mit Amazon – oder laden einmalig ihren Amazon-Datenexport hoch.</p>
-        <div class="chips"><span class="chip">Goodreads</span><span class="chip">Hardcover</span><span class="chip">Amazon-Export</span><span class="chip">ISBN-Scan</span></div>
+    <span class="eyebrow">So funktioniert die Verbindung</span>
+    <h2>Ein fertiges Buch wandert vom Kindle ins Regal.</h2>
+    <p class="lead" style="margin-top:18px">Sobald du ausgelesen hast, holt Kolophon Titel und Cover und setzt sie auf den E-Ink-Rücken. Danach wechseln die Titel von selbst – im Intervall, das du in der App einstellst.</p>
+    <div class="conn-stage" id="conn-stage" data-phase="hold">
+      <div class="conn-col">
+        <p class="device-kicker">Gerade ausgelesen</p>
+        <div class="ereader">
+          <div class="ereader-screen">
+            <div class="ereader-cover" id="kindle-cover" style="--cover:#3d5a4c"></div>
+            <p class="ereader-title" id="kindle-title">Die Stille der Fjorde</p>
+            <p class="ereader-author" id="kindle-author">Mara Lind</p>
+            <p class="ereader-done">Gelesen ✓</p>
+          </div>
+        </div>
+        <p class="device-label">Dein Kindle</p>
       </div>
-      <div class="step">
-        <div class="n">02</div>
-        <h3>Kolophon gestaltet jeden Rücken</h3>
-        <p>Für jedes Buch holen wir das Cover, schneiden es auf das schmale Format zu, rastern es für E-Ink und setzen Titel, Autor und Lesedatum – wie ein Buchbinder.</p>
-        <div class="chips"><span class="chip">Open Library</span><span class="chip">Google Books</span><span class="chip">Dithering</span></div>
+      <div class="conn-bridge" id="conn-bridge" aria-hidden="true">
+        <svg class="conn-svg" viewBox="0 0 280 72" preserveAspectRatio="none">
+          <path class="conn-line" d="M6 36 H274"></path>
+        </svg>
+        <div class="conn-packet" id="conn-packet">
+          <svg viewBox="0 0 36 36" width="22" height="22" aria-hidden="true">
+            <path d="M8.5 16.5a10 10 0 0 1 19 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M12.2 20.2a5.4 5.4 0 0 1 11.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            <circle cx="18" cy="24.2" r="1.5" fill="currentColor"/>
+          </svg>
+        </div>
       </div>
-      <div class="step">
-        <div class="n">03</div>
-        <h3>Ins Regal stellen</h3>
-        <p>Kolophon lädt die Rücken einmal täglich per WLAN und blättert stündlich weiter. Ein Druck aufs Kapital zeigt das nächste Buch. Nachts schläft es – das letzte Cover bleibt stehen.</p>
-        <div class="chips"><span class="chip">WLAN</span><span class="chip">Deep Sleep</span><span class="chip">USB-C</span></div>
+      <div class="conn-col">
+        <p class="device-kicker">Neuer Rücken</p>
+        <div class="ms" id="mini-spine">
+          <i class="ms-band t1"></i><i class="ms-band t2"></i>
+          <div class="ms-win">
+            <div class="ms-cover" id="spine-cover" style="--cover:#4a5a6a"></div>
+            <p class="ms-title" id="spine-title">Notizen aus dem Zug</p>
+            <p class="ms-when" id="spine-when">gelesen im Juni 2025</p>
+            <div class="ms-flash" id="spine-flash"></div>
+          </div>
+          <b class="ms-mono">K</b>
+          <i class="ms-band b1"></i><i class="ms-band b2"></i>
+        </div>
+        <div class="ms-plank"></div>
+        <p class="device-label">Kolophon im Regal</p>
+        <div class="cycle">
+          <p class="cycle-count" id="cycle-count">12 <span>/ 12</span></p>
+          <p class="cycle-caption">Titel wechseln auf dem Rücken</p>
+          <div class="cycle-dots" id="cycle-dots" aria-hidden="true"></div>
+        </div>
       </div>
     </div>
+    <p class="visually-hidden" id="conn-live" aria-live="polite"></p>
+    <div class="conn-panel">
+      <div>
+        <p class="interval-label" id="interval-label">Wechselintervall – stellst du selbst ein</p>
+        <div class="seg" role="radiogroup" aria-labelledby="interval-label">
+          <button type="button" role="radio" data-speed="demo" aria-checked="true">Alle 10 Sek. (Demo)</button>
+          <button type="button" role="radio" data-speed="hour" aria-checked="false">Stündlich</button>
+          <button type="button" role="radio" data-speed="day" aria-checked="false">Täglich</button>
+          <button type="button" role="radio" data-speed="week" aria-checked="false">Wöchentlich</button>
+        </div>
+        <p class="interval-note">In der Demo beschleunigt. Oder per Druck aufs Kapital weiterblättern.</p>
+      </div>
+      <aside class="app-card">
+        <span class="eyebrow">App-Einstellung</span>
+        <p class="app-kicker">Wechselintervall in der Begleit-App</p>
+        <p class="app-value" id="app-value">Alle 10 Sek.</p>
+        <p class="app-hint" id="app-hint">In der Demo beschleunigt: 10 Sekunden am Gerät laufen hier in wenigen Sekunden.</p>
+      </aside>
+    </div>
+    <ol class="conn-steps">
+      <li><b>Gelesen auf dem Kindle.</b> Das Buch ist fertig – „Gelesen“ steht auf dem Lesegerät, ohne Amazon-Logo und ohne Passwort.</li>
+      <li><b>Die Verbindung.</b> Titel und Cover wandern zur Kolophon-App, über Goodreads, Hardcover oder einen einmaligen Export.</li>
+      <li><b>E-Ink im Regal.</b> Der Rücken flackert kurz auf und zeigt Cover, Titel und „gelesen im …“. Dann kommt das nächste Buch.</li>
+    </ol>
+    <p class="conn-static-note" id="conn-static-note" hidden>Bewegung ist reduziert: die Verbindung steht still, das Intervall bleibt einstellbar.</p>
   </div>
 </section>
 
@@ -466,6 +603,217 @@ footer p{margin:6px 0}
   document.getElementById('wl').addEventListener('submit', function(){
     document.getElementById('thanks').style.display = 'block';
   });
+
+  (function(){
+    var books = [
+      {title:"Die Stille der Fjorde", author:"Mara Lind", when:"gelesen im März 2026", cover:"#3d5a4c"},
+      {title:"Atlas der Gezeiten", author:"Jonas Reh", when:"gelesen im Januar 2026", cover:"#1f4e5a"},
+      {title:"Der letzte Sommer in Triest", author:"Elena Varga", when:"gelesen im August 2025", cover:"#8a3a32"},
+      {title:"Kupfer und Salz", author:"Ida Holm", when:"gelesen im November 2025", cover:"#a67c52"},
+      {title:"Das Gewicht der Worte", author:"Paul Kerber", when:"gelesen im Mai 2025", cover:"#5c4a6e"},
+      {title:"Nordlicht", author:"Siri Aalto", when:"gelesen im Februar 2026", cover:"#2d3a4a"},
+      {title:"Über Ozeane", author:"Leander Falk", when:"gelesen im Juli 2025", cover:"#7b8a6e"},
+      {title:"Die Kartografin", author:"Nora Weiss", when:"gelesen im April 2026", cover:"#7d2f25"},
+      {title:"Ein Jahr in Wien", author:"Theo Mark", when:"gelesen im September 2025", cover:"#c58f4f"},
+      {title:"Der Leuchtturmwart", author:"Anja Sol", when:"gelesen im Oktober 2025", cover:"#3f3a35"},
+      {title:"Papier und Salz", author:"Mira Feld", when:"gelesen im Dezember 2025", cover:"#6e4a3a"},
+      {title:"Notizen aus dem Zug", author:"Kim Berger", when:"gelesen im Juni 2025", cover:"#4a5a6a"}
+    ];
+    var speeds = {
+      demo:{ms:4500, value:"Alle 10 Sek.", hint:"In der Demo beschleunigt: 10 Sekunden am Gerät laufen hier in wenigen Sekunden."},
+      hour:{ms:8000, value:"Stündlich", hint:"In der Demo beschleunigt: eine Stunde am Gerät, hier wenige Sekunden."},
+      day:{ms:12000, value:"Täglich", hint:"In der Demo beschleunigt: ein Tag am Gerät, hier etwas langsamer."},
+      week:{ms:18000, value:"Wöchentlich", hint:"In der Demo beschleunigt: eine Woche am Gerät, hier am langsamsten."}
+    };
+    var stage = document.getElementById("conn-stage");
+    var bridge = document.getElementById("conn-bridge");
+    var packet = document.getElementById("conn-packet");
+    var flash = document.getElementById("spine-flash");
+    var dots = document.getElementById("cycle-dots");
+    var live = document.getElementById("conn-live");
+    var reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var reduce = reduceMq.matches;
+    var speed = "demo";
+    var index = 0;
+    var spineIndex = 0;
+    var gen = 0;
+    var timers = [];
+    var raf = 0;
+    var playing = false;
+
+    books.forEach(function(){
+      var dot = document.createElement("i");
+      dots.appendChild(dot);
+    });
+
+    function clearMotion(){
+      timers.forEach(function(id){ clearTimeout(id); });
+      timers = [];
+      if(raf) cancelAnimationFrame(raf);
+      raf = 0;
+    }
+    function later(fn, ms){
+      timers.push(setTimeout(fn, ms));
+    }
+    function setPhase(name){ stage.dataset.phase = name; }
+    function paintCover(el, book){ el.style.setProperty("--cover", book.cover); }
+    function renderKindle(book){
+      paintCover(document.getElementById("kindle-cover"), book);
+      document.getElementById("kindle-title").textContent = book.title;
+      document.getElementById("kindle-author").textContent = book.author;
+    }
+    function renderSpine(book, flicker){
+      paintCover(document.getElementById("spine-cover"), book);
+      document.getElementById("spine-title").textContent = book.title;
+      document.getElementById("spine-when").textContent = book.when;
+      if(flicker && !reduce){
+        flash.classList.remove("on");
+        void flash.offsetWidth;
+        flash.classList.add("on");
+      }
+      live.textContent = "Rücken zeigt: " + book.title + ", " + book.when + ", " + (spineIndex + 1) + " von " + books.length;
+    }
+    function renderProgress(i){
+      spineIndex = i;
+      document.getElementById("cycle-count").innerHTML = (i + 1) + " <span>/ " + books.length + "</span>";
+      var marks = dots.children;
+      for(var n = 0; n < marks.length; n++) marks[n].classList.toggle("on", n === i);
+    }
+    function placePacket(p){
+      var span = bridge.clientWidth;
+      var pad = Math.min(18, Math.max(8, span * 0.12));
+      var pos = pad + Math.max(0, span - pad * 2) * p;
+      packet.style.left = "0px";
+      packet.style.top = "50%";
+      packet.style.transform = "translate(-50%, -50%) translate(" + pos + "px, 0)";
+    }
+    function showCard(){
+      var spec = speeds[speed];
+      document.getElementById("app-value").textContent = spec.value;
+      document.getElementById("app-hint").textContent = spec.hint;
+      var buttons = stage.parentNode.querySelectorAll("[data-speed]");
+      for(var i = 0; i < buttons.length; i++){
+        buttons[i].setAttribute("aria-checked", buttons[i].getAttribute("data-speed") === speed ? "true" : "false");
+      }
+    }
+    function playCycle(){
+      var my = ++gen;
+      clearMotion();
+      if(reduce || !playing) return;
+      var book = books[index];
+      var prev = (index - 1 + books.length) % books.length;
+      renderKindle(book);
+      renderSpine(books[prev], false);
+      renderProgress(prev);
+      setPhase("read");
+      placePacket(0);
+      var total = speeds[speed].ms;
+      var readAt = Math.min(700, Math.round(total * 0.14));
+      var travelDur = 1100;
+      var arriveAt = readAt + travelDur;
+      later(function(){
+        if(my !== gen) return;
+        setPhase("travel");
+        var start = performance.now();
+        function step(now){
+          if(my !== gen) return;
+          var t = Math.min(1, (now - start) / travelDur);
+          placePacket(t);
+          if(t < 1) raf = requestAnimationFrame(step);
+        }
+        raf = requestAnimationFrame(step);
+      }, readAt);
+      later(function(){
+        if(my !== gen) return;
+        setPhase("flicker");
+        renderSpine(book, true);
+        renderProgress(index);
+        placePacket(1);
+      }, arriveAt);
+      later(function(){
+        if(my !== gen) return;
+        setPhase("hold");
+      }, arriveAt + 480);
+      later(function(){
+        if(my !== gen) return;
+        index = (index + 1) % books.length;
+        playCycle();
+      }, total);
+    }
+    function showStatic(){
+      clearMotion();
+      gen++;
+      var book = books[index];
+      renderKindle(book);
+      renderSpine(book, false);
+      renderProgress(index);
+      placePacket(0.55);
+      setPhase("hold");
+    }
+    function selectSpeed(key){
+      if(!speeds[key]) return;
+      speed = key;
+      showCard();
+      if(reduce) showStatic();
+      else if(playing) playCycle();
+    }
+    function setPlaying(on){
+      if(on === playing) return;
+      playing = on;
+      if(reduce){ showStatic(); return; }
+      if(on) playCycle();
+      else { clearMotion(); gen++; }
+    }
+    var group = document.querySelector(".seg");
+    group.addEventListener("click", function(e){
+      var btn = e.target.closest("button");
+      if(!btn) return;
+      selectSpeed(btn.getAttribute("data-speed"));
+    });
+    group.addEventListener("keydown", function(e){
+      var dir = (e.key === "ArrowRight" || e.key === "ArrowDown") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp") ? -1 : 0;
+      if(!dir) return;
+      e.preventDefault();
+      var buttons = [].slice.call(group.querySelectorAll("[data-speed]"));
+      var current = 0;
+      for(var i = 0; i < buttons.length; i++) if(buttons[i].getAttribute("data-speed") === speed) current = i;
+      var next = buttons[(current + dir + buttons.length) % buttons.length];
+      next.focus();
+      selectSpeed(next.getAttribute("data-speed"));
+    });
+    if(reduce){
+      document.getElementById("conn-static-note").hidden = false;
+      showCard();
+      showStatic();
+    } else {
+      showCard();
+      var seen = false;
+      if("IntersectionObserver" in window){
+        var obs = new IntersectionObserver(function(entries){
+          setPlaying(entries.some(function(entry){ return entry.isIntersecting; }));
+        }, {threshold:0.2});
+        obs.observe(stage);
+      } else {
+        playing = true;
+        playCycle();
+      }
+      document.addEventListener("visibilitychange", function(){
+        if(document.hidden){ seen = playing; setPlaying(false); }
+        else if(seen) setPlaying(true);
+      });
+    }
+    if(reduceMq.addEventListener){
+      reduceMq.addEventListener("change", function(){
+        reduce = reduceMq.matches;
+        document.getElementById("conn-static-note").hidden = !reduce;
+        if(reduce) showStatic();
+        else if(playing) playCycle();
+      });
+    }
+    window.addEventListener("resize", function(){
+      if(stage.dataset.phase !== "travel") placePacket(reduce ? 0.55 : (stage.dataset.phase === "hold" || stage.dataset.phase === "flicker" ? 1 : 0));
+    });
+  })();
 </script>
 </body>
 </html>
